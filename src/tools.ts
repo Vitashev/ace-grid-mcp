@@ -1,5 +1,6 @@
 import {
   formulaSnapshot,
+  generateImplementation,
   generateReactExample,
   getDocsPage,
   getFrameworkExample,
@@ -9,10 +10,13 @@ import {
   listDocsPages,
   listFeatureGroups,
   listFrameworkExamples,
+  planImplementation,
   searchCatalog,
   searchDocs,
   searchEverything,
   validateGridConfig,
+  type AceGridFramework,
+  type AceGridTier,
 } from "./catalog.js";
 import { PortalClient } from "./portalApi.js";
 
@@ -116,6 +120,25 @@ export const toolHandlers = {
 
   validateConfig(input: { config: unknown }) {
     return jsonResult(validateGridConfig(input.config));
+  },
+
+  planImplementation(input: {
+    framework?: AceGridFramework;
+    query: string;
+    tier?: AceGridTier;
+  }) {
+    return jsonResult(planImplementation(input));
+  },
+
+  generateImplementation(input: {
+    appId?: string;
+    domain?: string;
+    framework?: AceGridFramework;
+    licenseKey?: string;
+    query: string;
+    tier?: AceGridTier;
+  }) {
+    return jsonResult(generateImplementation(input));
   },
 
   generateReactExample(input: {

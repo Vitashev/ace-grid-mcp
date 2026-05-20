@@ -1,6 +1,6 @@
 # Ace Grid MCP
 
-Local Model Context Protocol server for Ace Grid. It gives MCP-compatible tools access to bundled Ace Grid API metadata, config validation, code sample generation, and optional account/license automation.
+Local Model Context Protocol server for Ace Grid. It gives MCP-compatible tools access to bundled Ace Grid docs, API metadata, config validation, framework implementation generation, and optional account/license automation.
 
 ## Install
 
@@ -49,11 +49,19 @@ Optional environment variables:
 
 ## Tools
 
-- `ace_grid_search_docs`: search bundled Ace Grid API metadata.
+- `ace_grid_search_docs`: search bundled Ace Grid docs, guide text, API metadata, and feature groups.
+- `ace_grid_search_api`: search only generated Ace Grid API metadata.
+- `ace_grid_search_doc_pages`: search only written docs page content.
+- `ace_grid_list_doc_pages`: list bundled docs pages.
+- `ace_grid_get_doc_page`: return a docs page by slug or path.
 - `ace_grid_list_feature_groups`: list feature groups and prop counts.
 - `ace_grid_get_prop`: inspect a prop by path, for example `layout.height`.
 - `ace_grid_validate_config`: report unknown and missing props in a config object.
+- `ace_grid_plan_implementation`: infer framework packages, required tier, matched features, docs, and relevant props from a natural-language request.
+- `ace_grid_generate_implementation`: generate React, Angular, Vue, Svelte, or Web Components starter code from a natural-language request.
 - `ace_grid_generate_react_example`: generate a React starter snippet for Community, Pro, or Enterprise.
+- `ace_grid_list_examples`: list bundled framework examples.
+- `ace_grid_generate_framework_example`: generate a bundled framework example.
 - `ace_grid_license_setup`: explain license config and public-key behavior.
 - `ace_grid_account_status`: optional authenticated account overview.
 - `ace_grid_list_apps`: optional authenticated app listing.

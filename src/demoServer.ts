@@ -28,6 +28,9 @@ const testPrompts = [
   "Find the metadata for license.appId and license.domain.",
   "Open the validation docs page and summarize when to use it.",
   "Generate a Svelte Ace Grid example and explain the package imports.",
+  "Plan an Angular Enterprise grid with server row model, pivoting, and pagination.",
+  "Generate a Svelte Pro grid with validation, appId app_demo, and license key ag_key_demo.",
+  "Generate a Vue implementation for charts and master detail with domain app.example.com.",
   "Generate a React Pro example using appId app_demo and license key ag_key_demo.",
   "Validate this config and explain what is wrong: {\"data\":{\"rows\":[]},\"layout\":{\"height\":400},\"badFeature\":true}",
   "Which Ace Grid feature groups are relevant for spreadsheet editing and validation?",
@@ -44,6 +47,8 @@ const localToolNames = [
   "ace_grid_list_feature_groups",
   "ace_grid_get_prop",
   "ace_grid_validate_config",
+  "ace_grid_plan_implementation",
+  "ace_grid_generate_implementation",
   "ace_grid_generate_react_example",
   "ace_grid_list_examples",
   "ace_grid_generate_framework_example",
@@ -69,6 +74,10 @@ const localToolDescriptions = {
     "Get a property by path, for example license.appId. Arguments: { path: string }.",
   ace_grid_validate_config:
     "Validate an Ace Grid config object. Arguments: { config: object }.",
+  ace_grid_plan_implementation:
+    "Plan an implementation from a query. Arguments: { query: string, framework?: 'react'|'angular'|'vue'|'svelte'|'web-components', tier?: 'Community'|'Pro'|'Enterprise' }.",
+  ace_grid_generate_implementation:
+    "Generate implementation code from a query. Arguments: { query: string, framework?: 'react'|'angular'|'vue'|'svelte'|'web-components', tier?: 'Community'|'Pro'|'Enterprise', appId?: string, licenseKey?: string, domain?: string }.",
   ace_grid_generate_react_example:
     "Generate React example. Arguments: { plan?: 'Community'|'Pro'|'Enterprise', appId?: string, licenseKey?: string, domain?: string }.",
   ace_grid_list_examples:
@@ -116,6 +125,20 @@ function googleEndpoint(model: string, apiKey: string) {
   return `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(
     model,
   )}:generateContent?key=${encodeURIComponent(apiKey)}`;
+}
+
+function isFramework(value: unknown): value is "react" | "angular" | "vue" | "svelte" | "web-components" {
+  return (
+    value === "react" ||
+    value === "angular" ||
+    value === "vue" ||
+    value === "svelte" ||
+    value === "web-components"
+  );
+}
+
+function isTier(value: unknown): value is "Community" | "Pro" | "Enterprise" {
+  return value === "Community" || value === "Pro" || value === "Enterprise";
 }
 
 async function callGoogle(options: {
@@ -191,6 +214,21 @@ async function executeToolCall(call: ToolCall) {
       return toolHandlers.getProp({ path: String(args.path ?? "") });
     case "ace_grid_validate_config":
       return toolHandlers.validateConfig({ config: args.config });
+    case "ace_grid_plan_implementation":
+      return toolHandlers.planImplementation({
+        framework: isFramework(args.framework) ? args.framework : undefined,
+        query: String(args.query ?? ""),
+        tier: isTier(args.tier) ? args.tier : undefined,
+      });
+    case "ace_grid_generate_implementation":
+      return toolHandlers.generateImplementation({
+        appId: typeof args.appId === "string" ? args.appId : undefined,
+        domain: typeof args.domain === "string" ? args.domain : undefined,
+        framework: isFramework(args.framework) ? args.framework : undefined,
+        licenseKey: typeof args.licenseKey === "string" ? args.licenseKey : undefined,
+        query: String(args.query ?? ""),
+        tier: isTier(args.tier) ? args.tier : undefined,
+      });
     case "ace_grid_generate_react_example":
       return toolHandlers.generateReactExample({
         appId: typeof args.appId === "string" ? args.appId : undefined,

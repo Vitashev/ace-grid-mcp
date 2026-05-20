@@ -82,6 +82,31 @@ server.tool(
 );
 
 server.tool(
+  "ace_grid_plan_implementation",
+  "Plan an Ace Grid implementation from a natural-language request. Returns matched features, tier, packages, docs, and relevant props.",
+  {
+    framework: z.enum(["react", "angular", "vue", "svelte", "web-components"]).optional(),
+    query: z.string().min(1),
+    tier: z.enum(["Community", "Pro", "Enterprise"]).optional(),
+  },
+  async (input) => toolHandlers.planImplementation(input),
+);
+
+server.tool(
+  "ace_grid_generate_implementation",
+  "Generate framework-specific Ace Grid starter code from a natural-language request, using bundled docs and API metadata.",
+  {
+    appId: z.string().optional(),
+    domain: z.string().optional(),
+    framework: z.enum(["react", "angular", "vue", "svelte", "web-components"]).optional(),
+    licenseKey: z.string().optional(),
+    query: z.string().min(1),
+    tier: z.enum(["Community", "Pro", "Enterprise"]).optional(),
+  },
+  async (input) => toolHandlers.generateImplementation(input),
+);
+
+server.tool(
   "ace_grid_generate_react_example",
   "Generate a small React Ace Grid example for Community, Pro, or Enterprise.",
   {

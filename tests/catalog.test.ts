@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   generateReactExample,
+  generateImplementation,
   getDocsPage,
   getFrameworkExample,
   getProp,
@@ -9,6 +10,7 @@ import {
   listDocsPages,
   listFeatureGroups,
   listFrameworkExamples,
+  planImplementation,
   searchCatalog,
   searchDocs,
   searchEverything,
@@ -119,6 +121,50 @@ describe("Ace Grid catalog", () => {
     expect(snippet).not.toContain("domain:");
   });
 
+  it("plans implementations from natural-language requests", () => {
+    const plan = planImplementation({
+      framework: "angular",
+      query: "Enterprise grid with server row model pivot and pagination",
+    });
+
+    expect(plan.framework).toBe("angular");
+    expect(plan.requiredTier).toBe("Enterprise");
+    expect(plan.installCommand).toContain("@ace-grid/angular");
+    expect(plan.matchedFeatures.map((feature) => feature.key)).toContain("serverRowModel");
+  });
+
+  it("generates framework implementation code with validated config", () => {
+    const generated = generateImplementation({
+      appId: "app_demo",
+      framework: "svelte",
+      licenseKey: "ag_key_demo",
+      query: "Pro validation grid with blocking validation",
+      tier: "Pro",
+    });
+
+    expect(generated.plan.requiredTier).toBe("Pro");
+    expect(generated.code).toContain("@ace-grid/svelte");
+    expect(generated.code).toContain("ag_key_demo");
+    expect(generated.code).toContain("validation");
+    expect(generated.validation).toMatchObject({
+      ok: true,
+      unknownProps: [],
+      missingRequiredProps: [],
+    });
+  });
+
+  it("upgrades the required tier when the query asks for Enterprise features", () => {
+    const generated = generateImplementation({
+      framework: "react",
+      query: "Pro chart and master detail grid",
+      tier: "Pro",
+    });
+
+    expect(generated.plan.requiredTier).toBe("Enterprise");
+    expect(generated.plan.warnings.join(" ")).toContain("Enterprise");
+    expect(generated.code).toContain('@ace-grid/enterprise');
+  });
+
   it("documents license public-key defaults", () => {
     const guide = licenseSetupGuide();
 
@@ -155,6 +201,30 @@ describe("tool handlers", () => {
         framework: "svelte",
       }).content[0].text,
     ).toContain("@ace-grid/svelte");
+  });
+
+  it("returns implementation plans and generated code through MCP handlers", () => {
+    expect(
+      JSON.parse(
+        toolHandlers.planImplementation({
+          framework: "vue",
+          query: "charts and pivot",
+        }).content[0].text,
+      ),
+    ).toMatchObject({
+      framework: "vue",
+      requiredTier: "Enterprise",
+    });
+
+    const generated = JSON.parse(
+      toolHandlers.generateImplementation({
+        framework: "web-components",
+        query: "license setup and validation",
+        tier: "Pro",
+      }).content[0].text,
+    );
+    expect(generated.code).toContain("@ace-grid/wc/pro");
+    expect(generated.validation.ok).toBe(true);
   });
 });
 
