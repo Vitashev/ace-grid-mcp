@@ -1,0 +1,408 @@
+{
+  "generatedAt": "2026-05-20T00:24:07.586Z",
+  "rootInterface": "GridProps",
+  "propCoverage": {
+    "generatedCount": 862,
+    "authoredSpecCount": 332,
+    "exactSpecCount": 217,
+    "prefixSpecCount": 115,
+    "exactCoveredCount": 217,
+    "prefixCoveredCount": 637,
+    "coveredCount": 854,
+    "missingCount": 8,
+    "orphanCount": 0,
+    "coveragePercent": 99.1,
+    "missingPathsPreview": [
+      "license.licenseKey",
+      "license.appId",
+      "license.apiBaseUrl",
+      "license.domain",
+      "license.leaseSigningPublicKey",
+      "license.runtime",
+      "license.version",
+      "license.fetchImpl"
+    ],
+    "orphanPaths": []
+  },
+  "typeCoverage": {
+    "usedCount": 233,
+    "needsAuthoredCount": 120,
+    "authoredCount": 127,
+    "missingCount": 1,
+    "orphanCount": 5,
+    "coveragePercent": 99.2,
+    "missingTypesPreview": [
+      "typeof fetch"
+    ],
+    "orphanTypes": [
+      "SortDirection",
+      "GridServerRowModelProps",
+      "GridFilterConfig",
+      "GridChartBrushActionOptions",
+      "GridChartRenderProps"
+    ]
+  },
+  "featureCoverage": [
+    {
+      "key": "license",
+      "label": "License",
+      "totalProps": 8,
+      "authoredProps": 0,
+      "exactCoveredProps": 0,
+      "prefixCoveredProps": 0,
+      "missingProps": 8,
+      "coveragePercent": 0,
+      "missingPropPathsPreview": [
+        "license.licenseKey",
+        "license.appId",
+        "license.apiBaseUrl",
+        "license.domain",
+        "license.leaseSigningPublicKey",
+        "license.runtime",
+        "license.version",
+        "license.fetchImpl"
+      ]
+    },
+    {
+      "key": "sparkline",
+      "label": "Sparkline",
+      "totalProps": 322,
+      "authoredProps": 322,
+      "exactCoveredProps": 10,
+      "prefixCoveredProps": 312,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "charts",
+      "label": "Charts",
+      "totalProps": 192,
+      "authoredProps": 192,
+      "exactCoveredProps": 53,
+      "prefixCoveredProps": 139,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "serverRowModel",
+      "label": "Server Row Model",
+      "totalProps": 42,
+      "authoredProps": 42,
+      "exactCoveredProps": 21,
+      "prefixCoveredProps": 21,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "pagination",
+      "label": "Pagination",
+      "totalProps": 34,
+      "authoredProps": 34,
+      "exactCoveredProps": 23,
+      "prefixCoveredProps": 11,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "theming",
+      "label": "Theming",
+      "totalProps": 33,
+      "authoredProps": 33,
+      "exactCoveredProps": 2,
+      "prefixCoveredProps": 31,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "selection",
+      "label": "Selection",
+      "totalProps": 24,
+      "authoredProps": 24,
+      "exactCoveredProps": 17,
+      "prefixCoveredProps": 7,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "pinning",
+      "label": "Pinning",
+      "totalProps": 19,
+      "authoredProps": 19,
+      "exactCoveredProps": 3,
+      "prefixCoveredProps": 16,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "validation",
+      "label": "Validation",
+      "totalProps": 18,
+      "authoredProps": 18,
+      "exactCoveredProps": 13,
+      "prefixCoveredProps": 5,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "contextMenu",
+      "label": "Context Menu",
+      "totalProps": 18,
+      "authoredProps": 18,
+      "exactCoveredProps": 3,
+      "prefixCoveredProps": 15,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "scroll",
+      "label": "Scroll",
+      "totalProps": 15,
+      "authoredProps": 15,
+      "exactCoveredProps": 5,
+      "prefixCoveredProps": 10,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "search",
+      "label": "Search",
+      "totalProps": 14,
+      "authoredProps": 14,
+      "exactCoveredProps": 9,
+      "prefixCoveredProps": 5,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "masterDetail",
+      "label": "Master Detail",
+      "totalProps": 13,
+      "authoredProps": 13,
+      "exactCoveredProps": 7,
+      "prefixCoveredProps": 6,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "reorder",
+      "label": "Reorder",
+      "totalProps": 12,
+      "authoredProps": 12,
+      "exactCoveredProps": 5,
+      "prefixCoveredProps": 7,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "keyedHeaders",
+      "label": "Keyed Headers",
+      "totalProps": 11,
+      "authoredProps": 11,
+      "exactCoveredProps": 3,
+      "prefixCoveredProps": 8,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "filter",
+      "label": "Filter",
+      "totalProps": 10,
+      "authoredProps": 10,
+      "exactCoveredProps": 6,
+      "prefixCoveredProps": 4,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "resize",
+      "label": "Resize",
+      "totalProps": 10,
+      "authoredProps": 10,
+      "exactCoveredProps": 3,
+      "prefixCoveredProps": 7,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "sorting",
+      "label": "Sorting",
+      "totalProps": 9,
+      "authoredProps": 9,
+      "exactCoveredProps": 9,
+      "prefixCoveredProps": 0,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "edit",
+      "label": "Edit",
+      "totalProps": 8,
+      "authoredProps": 8,
+      "exactCoveredProps": 4,
+      "prefixCoveredProps": 4,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "layout",
+      "label": "Layout",
+      "totalProps": 7,
+      "authoredProps": 7,
+      "exactCoveredProps": 5,
+      "prefixCoveredProps": 2,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "pivot",
+      "label": "Pivot",
+      "totalProps": 7,
+      "authoredProps": 7,
+      "exactCoveredProps": 0,
+      "prefixCoveredProps": 7,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "treeData",
+      "label": "Tree Data",
+      "totalProps": 7,
+      "authoredProps": 7,
+      "exactCoveredProps": 0,
+      "prefixCoveredProps": 7,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "clipboard",
+      "label": "Clipboard",
+      "totalProps": 5,
+      "authoredProps": 5,
+      "exactCoveredProps": 5,
+      "prefixCoveredProps": 0,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "rowGrouping",
+      "label": "Row Grouping",
+      "totalProps": 5,
+      "authoredProps": 5,
+      "exactCoveredProps": 0,
+      "prefixCoveredProps": 5,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "spanning",
+      "label": "Spanning",
+      "totalProps": 4,
+      "authoredProps": 4,
+      "exactCoveredProps": 0,
+      "prefixCoveredProps": 4,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "columns",
+      "label": "Columns",
+      "totalProps": 3,
+      "authoredProps": 3,
+      "exactCoveredProps": 3,
+      "prefixCoveredProps": 0,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "virtual",
+      "label": "Virtual",
+      "totalProps": 3,
+      "authoredProps": 3,
+      "exactCoveredProps": 3,
+      "prefixCoveredProps": 0,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "accessibility",
+      "label": "Accessibility",
+      "totalProps": 3,
+      "authoredProps": 3,
+      "exactCoveredProps": 0,
+      "prefixCoveredProps": 3,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "data",
+      "label": "Data",
+      "totalProps": 2,
+      "authoredProps": 2,
+      "exactCoveredProps": 2,
+      "prefixCoveredProps": 0,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "formula",
+      "label": "Formula",
+      "totalProps": 2,
+      "authoredProps": 2,
+      "exactCoveredProps": 2,
+      "prefixCoveredProps": 0,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "columnGrouping",
+      "label": "Column Grouping",
+      "totalProps": 1,
+      "authoredProps": 1,
+      "exactCoveredProps": 0,
+      "prefixCoveredProps": 1,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
+      "key": "rowsConfig",
+      "label": "Rows Config",
+      "totalProps": 1,
+      "authoredProps": 1,
+      "exactCoveredProps": 1,
+      "prefixCoveredProps": 0,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    }
+  ]
+}

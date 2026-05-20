@@ -1,0 +1,1137 @@
+{
+  "generatedAt": "2026-05-20T00:24:07.079Z",
+  "exportedConstant": "FORMULA_FUNCTIONS",
+  "functionCount": 152,
+  "categoryCount": 9,
+  "categories": [
+    {
+      "key": "array",
+      "label": "Array",
+      "anchorId": "formula-category-array",
+      "functionCount": 31,
+      "volatileCount": 0
+    },
+    {
+      "key": "database",
+      "label": "Database",
+      "anchorId": "formula-category-database",
+      "functionCount": 12,
+      "volatileCount": 0
+    },
+    {
+      "key": "date",
+      "label": "Date",
+      "anchorId": "formula-category-date",
+      "functionCount": 16,
+      "volatileCount": 2
+    },
+    {
+      "key": "filter",
+      "label": "Filter",
+      "anchorId": "formula-category-filter",
+      "functionCount": 4,
+      "volatileCount": 0
+    },
+    {
+      "key": "info",
+      "label": "Info",
+      "anchorId": "formula-category-info",
+      "functionCount": 10,
+      "volatileCount": 0
+    },
+    {
+      "key": "logical",
+      "label": "Logical",
+      "anchorId": "formula-category-logical",
+      "functionCount": 13,
+      "volatileCount": 0
+    },
+    {
+      "key": "math",
+      "label": "Math",
+      "anchorId": "formula-category-math",
+      "functionCount": 33,
+      "volatileCount": 2
+    },
+    {
+      "key": "statistical",
+      "label": "Statistical",
+      "anchorId": "formula-category-statistical",
+      "functionCount": 15,
+      "volatileCount": 0
+    },
+    {
+      "key": "text",
+      "label": "Text",
+      "anchorId": "formula-category-text",
+      "functionCount": 18,
+      "volatileCount": 0
+    }
+  ],
+  "functions": [
+    {
+      "name": "SUM",
+      "category": "Math",
+      "description": "Returns the sum of a series of numbers.",
+      "volatile": false,
+      "anchorId": "formula-fn-sum"
+    },
+    {
+      "name": "AVERAGE",
+      "category": "Statistical",
+      "description": "Returns the arithmetic mean of a set of values.",
+      "volatile": false,
+      "anchorId": "formula-fn-average"
+    },
+    {
+      "name": "MIN",
+      "category": "Statistical",
+      "description": "Returns the smallest value in a list.",
+      "volatile": false,
+      "anchorId": "formula-fn-min"
+    },
+    {
+      "name": "MAX",
+      "category": "Statistical",
+      "description": "Returns the largest value in a list.",
+      "volatile": false,
+      "anchorId": "formula-fn-max"
+    },
+    {
+      "name": "COUNT",
+      "category": "Statistical",
+      "description": "Counts numeric values in a list.",
+      "volatile": false,
+      "anchorId": "formula-fn-count"
+    },
+    {
+      "name": "COUNTA",
+      "category": "Statistical",
+      "description": "Counts non-empty values in a list.",
+      "volatile": false,
+      "anchorId": "formula-fn-counta"
+    },
+    {
+      "name": "PRODUCT",
+      "category": "Math",
+      "description": "Multiplies numbers together.",
+      "volatile": false,
+      "anchorId": "formula-fn-product"
+    },
+    {
+      "name": "SUMPRODUCT",
+      "category": "Array",
+      "description": "Sum of products of corresponding array values.",
+      "volatile": false,
+      "anchorId": "formula-fn-sumproduct"
+    },
+    {
+      "name": "SUMX2MY2",
+      "category": "Array",
+      "description": "Sum of differences of squares of corresponding values.",
+      "volatile": false,
+      "anchorId": "formula-fn-sumx2my2"
+    },
+    {
+      "name": "SUMX2PY2",
+      "category": "Array",
+      "description": "Sum of sums of squares of corresponding values.",
+      "volatile": false,
+      "anchorId": "formula-fn-sumx2py2"
+    },
+    {
+      "name": "SUMXMY2",
+      "category": "Array",
+      "description": "Sum of squares of differences of corresponding values.",
+      "volatile": false,
+      "anchorId": "formula-fn-sumxmy2"
+    },
+    {
+      "name": "IF",
+      "category": "Logical",
+      "description": "Returns one value if condition is true, another if false.",
+      "volatile": false,
+      "anchorId": "formula-fn-if"
+    },
+    {
+      "name": "AND",
+      "category": "Logical",
+      "description": "Returns TRUE if all arguments are TRUE.",
+      "volatile": false,
+      "anchorId": "formula-fn-and"
+    },
+    {
+      "name": "OR",
+      "category": "Logical",
+      "description": "Returns TRUE if any argument is TRUE.",
+      "volatile": false,
+      "anchorId": "formula-fn-or"
+    },
+    {
+      "name": "NOT",
+      "category": "Logical",
+      "description": "Returns the opposite of a logical value.",
+      "volatile": false,
+      "anchorId": "formula-fn-not"
+    },
+    {
+      "name": "IFERROR",
+      "category": "Logical",
+      "description": "Returns value if no error, otherwise fallback.",
+      "volatile": false,
+      "anchorId": "formula-fn-iferror"
+    },
+    {
+      "name": "TRUE",
+      "category": "Logical",
+      "description": "Returns the logical value TRUE.",
+      "volatile": false,
+      "anchorId": "formula-fn-true"
+    },
+    {
+      "name": "FALSE",
+      "category": "Logical",
+      "description": "Returns the logical value FALSE.",
+      "volatile": false,
+      "anchorId": "formula-fn-false"
+    },
+    {
+      "name": "ABS",
+      "category": "Math",
+      "description": "Returns the absolute value of a number.",
+      "volatile": false,
+      "anchorId": "formula-fn-abs"
+    },
+    {
+      "name": "ROUND",
+      "category": "Math",
+      "description": "Rounds a number to specified digits.",
+      "volatile": false,
+      "anchorId": "formula-fn-round"
+    },
+    {
+      "name": "ROUNDUP",
+      "category": "Math",
+      "description": "Rounds a number up, away from zero.",
+      "volatile": false,
+      "anchorId": "formula-fn-roundup"
+    },
+    {
+      "name": "ROUNDDOWN",
+      "category": "Math",
+      "description": "Rounds a number down, toward zero.",
+      "volatile": false,
+      "anchorId": "formula-fn-rounddown"
+    },
+    {
+      "name": "INT",
+      "category": "Math",
+      "description": "Rounds a number down to the nearest integer.",
+      "volatile": false,
+      "anchorId": "formula-fn-int"
+    },
+    {
+      "name": "MOD",
+      "category": "Math",
+      "description": "Returns the remainder after division.",
+      "volatile": false,
+      "anchorId": "formula-fn-mod"
+    },
+    {
+      "name": "POWER",
+      "category": "Math",
+      "description": "Raises a number to a power.",
+      "volatile": false,
+      "anchorId": "formula-fn-power"
+    },
+    {
+      "name": "SQRT",
+      "category": "Math",
+      "description": "Returns the square root of a number.",
+      "volatile": false,
+      "anchorId": "formula-fn-sqrt"
+    },
+    {
+      "name": "SIGN",
+      "category": "Math",
+      "description": "Returns the sign of a number.",
+      "volatile": false,
+      "anchorId": "formula-fn-sign"
+    },
+    {
+      "name": "CEILING",
+      "category": "Math",
+      "description": "Rounds a number up to the nearest multiple.",
+      "volatile": false,
+      "anchorId": "formula-fn-ceiling"
+    },
+    {
+      "name": "FLOOR",
+      "category": "Math",
+      "description": "Rounds a number down to the nearest multiple.",
+      "volatile": false,
+      "anchorId": "formula-fn-floor"
+    },
+    {
+      "name": "CONCAT",
+      "category": "Text",
+      "description": "Joins text values together.",
+      "volatile": false,
+      "anchorId": "formula-fn-concat"
+    },
+    {
+      "name": "CONCATENATE",
+      "category": "Text",
+      "description": "Joins text values together.",
+      "volatile": false,
+      "anchorId": "formula-fn-concatenate"
+    },
+    {
+      "name": "LEFT",
+      "category": "Text",
+      "description": "Returns the leftmost characters from a string.",
+      "volatile": false,
+      "anchorId": "formula-fn-left"
+    },
+    {
+      "name": "RIGHT",
+      "category": "Text",
+      "description": "Returns the rightmost characters from a string.",
+      "volatile": false,
+      "anchorId": "formula-fn-right"
+    },
+    {
+      "name": "MID",
+      "category": "Text",
+      "description": "Returns a segment of a string.",
+      "volatile": false,
+      "anchorId": "formula-fn-mid"
+    },
+    {
+      "name": "LEN",
+      "category": "Text",
+      "description": "Returns the length of a string.",
+      "volatile": false,
+      "anchorId": "formula-fn-len"
+    },
+    {
+      "name": "TRIM",
+      "category": "Text",
+      "description": "Removes leading and trailing whitespace.",
+      "volatile": false,
+      "anchorId": "formula-fn-trim"
+    },
+    {
+      "name": "SUBSTITUTE",
+      "category": "Text",
+      "description": "Replaces occurrences of text within a string.",
+      "volatile": false,
+      "anchorId": "formula-fn-substitute"
+    },
+    {
+      "name": "TEXT",
+      "category": "Text",
+      "description": "Formats a value as text.",
+      "volatile": false,
+      "anchorId": "formula-fn-text"
+    },
+    {
+      "name": "UPPER",
+      "category": "Text",
+      "description": "Converts text to uppercase.",
+      "volatile": false,
+      "anchorId": "formula-fn-upper"
+    },
+    {
+      "name": "LOWER",
+      "category": "Text",
+      "description": "Converts text to lowercase.",
+      "volatile": false,
+      "anchorId": "formula-fn-lower"
+    },
+    {
+      "name": "REPT",
+      "category": "Text",
+      "description": "Repeats text a specified number of times.",
+      "volatile": false,
+      "anchorId": "formula-fn-rept"
+    },
+    {
+      "name": "TEXTJOIN",
+      "category": "Text",
+      "description": "Joins text with a delimiter, optionally ignoring empty cells.",
+      "volatile": false,
+      "anchorId": "formula-fn-textjoin"
+    },
+    {
+      "name": "JOIN",
+      "category": "Text",
+      "description": "Joins text with a delimiter.",
+      "volatile": false,
+      "anchorId": "formula-fn-join"
+    },
+    {
+      "name": "VALUE",
+      "category": "Text",
+      "description": "Converts a text value to a number.",
+      "volatile": false,
+      "anchorId": "formula-fn-value"
+    },
+    {
+      "name": "DATE",
+      "category": "Date",
+      "description": "Creates a date from year, month, day.",
+      "volatile": false,
+      "anchorId": "formula-fn-date"
+    },
+    {
+      "name": "TODAY",
+      "category": "Date",
+      "description": "Returns the current date.",
+      "volatile": true,
+      "anchorId": "formula-fn-today"
+    },
+    {
+      "name": "NOW",
+      "category": "Date",
+      "description": "Returns the current date and time.",
+      "volatile": true,
+      "anchorId": "formula-fn-now"
+    },
+    {
+      "name": "YEAR",
+      "category": "Date",
+      "description": "Returns the year from a date.",
+      "volatile": false,
+      "anchorId": "formula-fn-year"
+    },
+    {
+      "name": "MONTH",
+      "category": "Date",
+      "description": "Returns the month from a date.",
+      "volatile": false,
+      "anchorId": "formula-fn-month"
+    },
+    {
+      "name": "DAY",
+      "category": "Date",
+      "description": "Returns the day of the month from a date.",
+      "volatile": false,
+      "anchorId": "formula-fn-day"
+    },
+    {
+      "name": "HOUR",
+      "category": "Date",
+      "description": "Returns the hour from a time.",
+      "volatile": false,
+      "anchorId": "formula-fn-hour"
+    },
+    {
+      "name": "MINUTE",
+      "category": "Date",
+      "description": "Returns the minute from a time.",
+      "volatile": false,
+      "anchorId": "formula-fn-minute"
+    },
+    {
+      "name": "SECOND",
+      "category": "Date",
+      "description": "Returns the second from a time.",
+      "volatile": false,
+      "anchorId": "formula-fn-second"
+    },
+    {
+      "name": "COUNTIF",
+      "category": "Statistical",
+      "description": "Counts values matching a criterion.",
+      "volatile": false,
+      "anchorId": "formula-fn-countif"
+    },
+    {
+      "name": "SUMIF",
+      "category": "Math",
+      "description": "Sums values matching a criterion.",
+      "volatile": false,
+      "anchorId": "formula-fn-sumif"
+    },
+    {
+      "name": "AVERAGEIF",
+      "category": "Statistical",
+      "description": "Returns the average of values matching a criterion.",
+      "volatile": false,
+      "anchorId": "formula-fn-averageif"
+    },
+    {
+      "name": "COUNTIFS",
+      "category": "Statistical",
+      "description": "Counts values matching multiple criteria.",
+      "volatile": false,
+      "anchorId": "formula-fn-countifs"
+    },
+    {
+      "name": "SUMIFS",
+      "category": "Math",
+      "description": "Sums values matching multiple criteria.",
+      "volatile": false,
+      "anchorId": "formula-fn-sumifs"
+    },
+    {
+      "name": "AVERAGEIFS",
+      "category": "Statistical",
+      "description": "Returns the average of values matching multiple criteria.",
+      "volatile": false,
+      "anchorId": "formula-fn-averageifs"
+    },
+    {
+      "name": "MAXIFS",
+      "category": "Statistical",
+      "description": "Returns the maximum value matching multiple criteria.",
+      "volatile": false,
+      "anchorId": "formula-fn-maxifs"
+    },
+    {
+      "name": "MINIFS",
+      "category": "Statistical",
+      "description": "Returns the minimum value matching multiple criteria.",
+      "volatile": false,
+      "anchorId": "formula-fn-minifs"
+    },
+    {
+      "name": "COUNTBLANK",
+      "category": "Statistical",
+      "description": "Counts empty cells in a range.",
+      "volatile": false,
+      "anchorId": "formula-fn-countblank"
+    },
+    {
+      "name": "AVERAGEA",
+      "category": "Statistical",
+      "description": "Average including text and logical values.",
+      "volatile": false,
+      "anchorId": "formula-fn-averagea"
+    },
+    {
+      "name": "MAXA",
+      "category": "Statistical",
+      "description": "Maximum including text and logical values.",
+      "volatile": false,
+      "anchorId": "formula-fn-maxa"
+    },
+    {
+      "name": "MINA",
+      "category": "Statistical",
+      "description": "Minimum including text and logical values.",
+      "volatile": false,
+      "anchorId": "formula-fn-mina"
+    },
+    {
+      "name": "PI",
+      "category": "Math",
+      "description": "Returns the value of Pi.",
+      "volatile": false,
+      "anchorId": "formula-fn-pi"
+    },
+    {
+      "name": "RAND",
+      "category": "Math",
+      "description": "Returns a random number between 0 and 1.",
+      "volatile": true,
+      "anchorId": "formula-fn-rand"
+    },
+    {
+      "name": "RANDBETWEEN",
+      "category": "Math",
+      "description": "Returns a random integer between two values.",
+      "volatile": true,
+      "anchorId": "formula-fn-randbetween"
+    },
+    {
+      "name": "LOG",
+      "category": "Math",
+      "description": "Returns the logarithm with specified base.",
+      "volatile": false,
+      "anchorId": "formula-fn-log"
+    },
+    {
+      "name": "LOG10",
+      "category": "Math",
+      "description": "Returns the base-10 logarithm.",
+      "volatile": false,
+      "anchorId": "formula-fn-log10"
+    },
+    {
+      "name": "LN",
+      "category": "Math",
+      "description": "Returns the natural logarithm.",
+      "volatile": false,
+      "anchorId": "formula-fn-ln"
+    },
+    {
+      "name": "EXP",
+      "category": "Math",
+      "description": "Returns e raised to the power of a number.",
+      "volatile": false,
+      "anchorId": "formula-fn-exp"
+    },
+    {
+      "name": "SIN",
+      "category": "Math",
+      "description": "Returns the sine of an angle in radians.",
+      "volatile": false,
+      "anchorId": "formula-fn-sin"
+    },
+    {
+      "name": "COS",
+      "category": "Math",
+      "description": "Returns the cosine of an angle in radians.",
+      "volatile": false,
+      "anchorId": "formula-fn-cos"
+    },
+    {
+      "name": "TAN",
+      "category": "Math",
+      "description": "Returns the tangent of an angle in radians.",
+      "volatile": false,
+      "anchorId": "formula-fn-tan"
+    },
+    {
+      "name": "RADIANS",
+      "category": "Math",
+      "description": "Converts degrees to radians.",
+      "volatile": false,
+      "anchorId": "formula-fn-radians"
+    },
+    {
+      "name": "DEGREES",
+      "category": "Math",
+      "description": "Converts radians to degrees.",
+      "volatile": false,
+      "anchorId": "formula-fn-degrees"
+    },
+    {
+      "name": "EXACT",
+      "category": "Text",
+      "description": "Checks whether two strings are identical.",
+      "volatile": false,
+      "anchorId": "formula-fn-exact"
+    },
+    {
+      "name": "FIND",
+      "category": "Text",
+      "description": "Finds a substring position (case-sensitive).",
+      "volatile": false,
+      "anchorId": "formula-fn-find"
+    },
+    {
+      "name": "SEARCH",
+      "category": "Text",
+      "description": "Finds a substring position (case-insensitive).",
+      "volatile": false,
+      "anchorId": "formula-fn-search"
+    },
+    {
+      "name": "ISBLANK",
+      "category": "Info",
+      "description": "Checks whether a value is blank.",
+      "volatile": false,
+      "anchorId": "formula-fn-isblank"
+    },
+    {
+      "name": "ISNUMBER",
+      "category": "Info",
+      "description": "Checks whether a value is a number.",
+      "volatile": false,
+      "anchorId": "formula-fn-isnumber"
+    },
+    {
+      "name": "ISTEXT",
+      "category": "Info",
+      "description": "Checks whether a value is text.",
+      "volatile": false,
+      "anchorId": "formula-fn-istext"
+    },
+    {
+      "name": "ISERROR",
+      "category": "Info",
+      "description": "Checks whether a value is an error.",
+      "volatile": false,
+      "anchorId": "formula-fn-iserror"
+    },
+    {
+      "name": "DATEVALUE",
+      "category": "Date",
+      "description": "Converts a date string into a date value.",
+      "volatile": false,
+      "anchorId": "formula-fn-datevalue"
+    },
+    {
+      "name": "TIME",
+      "category": "Date",
+      "description": "Creates a time from hour, minute, second.",
+      "volatile": false,
+      "anchorId": "formula-fn-time"
+    },
+    {
+      "name": "DAYS",
+      "category": "Date",
+      "description": "Returns the number of days between two dates.",
+      "volatile": false,
+      "anchorId": "formula-fn-days"
+    },
+    {
+      "name": "EDATE",
+      "category": "Date",
+      "description": "Returns a date offset by a number of months.",
+      "volatile": false,
+      "anchorId": "formula-fn-edate"
+    },
+    {
+      "name": "EOMONTH",
+      "category": "Date",
+      "description": "Returns the last day of the month offset by months.",
+      "volatile": false,
+      "anchorId": "formula-fn-eomonth"
+    },
+    {
+      "name": "WEEKDAY",
+      "category": "Date",
+      "description": "Returns the day of the week for a date.",
+      "volatile": false,
+      "anchorId": "formula-fn-weekday"
+    },
+    {
+      "name": "WEEKNUM",
+      "category": "Date",
+      "description": "Returns the week number of the year.",
+      "volatile": false,
+      "anchorId": "formula-fn-weeknum"
+    },
+    {
+      "name": "TRUNC",
+      "category": "Math",
+      "description": "Truncates a number to a specified number of digits.",
+      "volatile": false,
+      "anchorId": "formula-fn-trunc"
+    },
+    {
+      "name": "SUMSQ",
+      "category": "Math",
+      "description": "Returns the sum of the squares of numbers.",
+      "volatile": false,
+      "anchorId": "formula-fn-sumsq"
+    },
+    {
+      "name": "QUOTIENT",
+      "category": "Math",
+      "description": "Returns the integer portion of a division.",
+      "volatile": false,
+      "anchorId": "formula-fn-quotient"
+    },
+    {
+      "name": "MROUND",
+      "category": "Math",
+      "description": "Rounds a number to the nearest multiple.",
+      "volatile": false,
+      "anchorId": "formula-fn-mround"
+    },
+    {
+      "name": "EVEN",
+      "category": "Math",
+      "description": "Rounds a number up to the nearest even integer.",
+      "volatile": false,
+      "anchorId": "formula-fn-even"
+    },
+    {
+      "name": "ODD",
+      "category": "Math",
+      "description": "Rounds a number up to the nearest odd integer.",
+      "volatile": false,
+      "anchorId": "formula-fn-odd"
+    },
+    {
+      "name": "ISEVEN",
+      "category": "Info",
+      "description": "Checks whether a number is even.",
+      "volatile": false,
+      "anchorId": "formula-fn-iseven"
+    },
+    {
+      "name": "ISODD",
+      "category": "Info",
+      "description": "Checks whether a number is odd.",
+      "volatile": false,
+      "anchorId": "formula-fn-isodd"
+    },
+    {
+      "name": "ISLOGICAL",
+      "category": "Info",
+      "description": "Checks whether a value is logical (TRUE/FALSE).",
+      "volatile": false,
+      "anchorId": "formula-fn-islogical"
+    },
+    {
+      "name": "NA",
+      "category": "Info",
+      "description": "Returns the #N/A error value.",
+      "volatile": false,
+      "anchorId": "formula-fn-na"
+    },
+    {
+      "name": "ISNA",
+      "category": "Info",
+      "description": "Checks whether a value is #N/A.",
+      "volatile": false,
+      "anchorId": "formula-fn-isna"
+    },
+    {
+      "name": "TYPE",
+      "category": "Info",
+      "description": "Returns a number identifying the type of a value.",
+      "volatile": false,
+      "anchorId": "formula-fn-type"
+    },
+    {
+      "name": "IFNA",
+      "category": "Logical",
+      "description": "Returns fallback if value is #N/A.",
+      "volatile": false,
+      "anchorId": "formula-fn-ifna"
+    },
+    {
+      "name": "IFS",
+      "category": "Logical",
+      "description": "Evaluates multiple conditions in order.",
+      "volatile": false,
+      "anchorId": "formula-fn-ifs"
+    },
+    {
+      "name": "XOR",
+      "category": "Logical",
+      "description": "Returns TRUE if an odd number of arguments are TRUE.",
+      "volatile": false,
+      "anchorId": "formula-fn-xor"
+    },
+    {
+      "name": "SWITCH",
+      "category": "Logical",
+      "description": "Matches an expression against cases.",
+      "volatile": false,
+      "anchorId": "formula-fn-switch"
+    },
+    {
+      "name": "LAMBDA",
+      "category": "Logical",
+      "description": "Creates a reusable lambda function.",
+      "volatile": false,
+      "anchorId": "formula-fn-lambda"
+    },
+    {
+      "name": "LET",
+      "category": "Logical",
+      "description": "Assigns names to values and returns the final expression.",
+      "volatile": false,
+      "anchorId": "formula-fn-let"
+    },
+    {
+      "name": "ARRAYFORMULA",
+      "category": "Array",
+      "description": "Enables array outputs from a formula expression.",
+      "volatile": false,
+      "anchorId": "formula-fn-arrayformula"
+    },
+    {
+      "name": "ARRAY_CONSTRAIN",
+      "category": "Array",
+      "description": "Constrains an array to a specified size.",
+      "volatile": false,
+      "anchorId": "formula-fn-array-constrain"
+    },
+    {
+      "name": "CHOOSECOLS",
+      "category": "Array",
+      "description": "Selects specific columns from an array.",
+      "volatile": false,
+      "anchorId": "formula-fn-choosecols"
+    },
+    {
+      "name": "CHOOSEROWS",
+      "category": "Array",
+      "description": "Selects specific rows from an array.",
+      "volatile": false,
+      "anchorId": "formula-fn-chooserows"
+    },
+    {
+      "name": "WRAPROWS",
+      "category": "Array",
+      "description": "Wraps values into rows.",
+      "volatile": false,
+      "anchorId": "formula-fn-wraprows"
+    },
+    {
+      "name": "WRAPCOLS",
+      "category": "Array",
+      "description": "Wraps values into columns.",
+      "volatile": false,
+      "anchorId": "formula-fn-wrapcols"
+    },
+    {
+      "name": "FILTER",
+      "category": "Filter",
+      "description": "Filters a range based on conditions.",
+      "volatile": false,
+      "anchorId": "formula-fn-filter"
+    },
+    {
+      "name": "SORT",
+      "category": "Filter",
+      "description": "Sorts rows in a range by one or more columns.",
+      "volatile": false,
+      "anchorId": "formula-fn-sort"
+    },
+    {
+      "name": "SORTN",
+      "category": "Filter",
+      "description": "Returns the first n rows after sorting.",
+      "volatile": false,
+      "anchorId": "formula-fn-sortn"
+    },
+    {
+      "name": "UNIQUE",
+      "category": "Filter",
+      "description": "Returns unique rows or columns from a range.",
+      "volatile": false,
+      "anchorId": "formula-fn-unique"
+    },
+    {
+      "name": "MAP",
+      "category": "Array",
+      "description": "Maps a lambda across arrays.",
+      "volatile": false,
+      "anchorId": "formula-fn-map"
+    },
+    {
+      "name": "BYROW",
+      "category": "Array",
+      "description": "Applies a lambda to each row.",
+      "volatile": false,
+      "anchorId": "formula-fn-byrow"
+    },
+    {
+      "name": "BYCOL",
+      "category": "Array",
+      "description": "Applies a lambda to each column.",
+      "volatile": false,
+      "anchorId": "formula-fn-bycol"
+    },
+    {
+      "name": "REDUCE",
+      "category": "Array",
+      "description": "Reduces an array into a single value.",
+      "volatile": false,
+      "anchorId": "formula-fn-reduce"
+    },
+    {
+      "name": "SCAN",
+      "category": "Array",
+      "description": "Returns intermediate results while reducing an array.",
+      "volatile": false,
+      "anchorId": "formula-fn-scan"
+    },
+    {
+      "name": "MAKEARRAY",
+      "category": "Array",
+      "description": "Creates an array by applying a lambda to coordinates.",
+      "volatile": false,
+      "anchorId": "formula-fn-makearray"
+    },
+    {
+      "name": "SEQUENCE",
+      "category": "Array",
+      "description": "Generates a sequence of numbers.",
+      "volatile": false,
+      "anchorId": "formula-fn-sequence"
+    },
+    {
+      "name": "TRANSPOSE",
+      "category": "Array",
+      "description": "Transposes rows and columns of an array.",
+      "volatile": false,
+      "anchorId": "formula-fn-transpose"
+    },
+    {
+      "name": "FLATTEN",
+      "category": "Array",
+      "description": "Flattens ranges into a single column.",
+      "volatile": false,
+      "anchorId": "formula-fn-flatten"
+    },
+    {
+      "name": "TOCOL",
+      "category": "Array",
+      "description": "Transforms a range into a single column.",
+      "volatile": false,
+      "anchorId": "formula-fn-tocol"
+    },
+    {
+      "name": "TOROW",
+      "category": "Array",
+      "description": "Transforms a range into a single row.",
+      "volatile": false,
+      "anchorId": "formula-fn-torow"
+    },
+    {
+      "name": "HSTACK",
+      "category": "Array",
+      "description": "Stacks arrays horizontally.",
+      "volatile": false,
+      "anchorId": "formula-fn-hstack"
+    },
+    {
+      "name": "VSTACK",
+      "category": "Array",
+      "description": "Stacks arrays vertically.",
+      "volatile": false,
+      "anchorId": "formula-fn-vstack"
+    },
+    {
+      "name": "FREQUENCY",
+      "category": "Array",
+      "description": "Calculates a frequency distribution for values.",
+      "volatile": false,
+      "anchorId": "formula-fn-frequency"
+    },
+    {
+      "name": "MMULT",
+      "category": "Array",
+      "description": "Calculates matrix multiplication.",
+      "volatile": false,
+      "anchorId": "formula-fn-mmult"
+    },
+    {
+      "name": "MDETERM",
+      "category": "Array",
+      "description": "Returns the determinant of a matrix.",
+      "volatile": false,
+      "anchorId": "formula-fn-mdeterm"
+    },
+    {
+      "name": "MINVERSE",
+      "category": "Array",
+      "description": "Returns the inverse of a matrix.",
+      "volatile": false,
+      "anchorId": "formula-fn-minverse"
+    },
+    {
+      "name": "LINEST",
+      "category": "Array",
+      "description": "Returns linear regression coefficients.",
+      "volatile": false,
+      "anchorId": "formula-fn-linest"
+    },
+    {
+      "name": "LOGEST",
+      "category": "Array",
+      "description": "Returns exponential regression coefficients.",
+      "volatile": false,
+      "anchorId": "formula-fn-logest"
+    },
+    {
+      "name": "TREND",
+      "category": "Array",
+      "description": "Returns values along a linear trend.",
+      "volatile": false,
+      "anchorId": "formula-fn-trend"
+    },
+    {
+      "name": "GROWTH",
+      "category": "Array",
+      "description": "Returns values along an exponential trend.",
+      "volatile": false,
+      "anchorId": "formula-fn-growth"
+    },
+    {
+      "name": "DAVERAGE",
+      "category": "Database",
+      "description": "Returns the average of matching values in a table.",
+      "volatile": false,
+      "anchorId": "formula-fn-daverage"
+    },
+    {
+      "name": "DCOUNT",
+      "category": "Database",
+      "description": "Counts numeric values in a table matching criteria.",
+      "volatile": false,
+      "anchorId": "formula-fn-dcount"
+    },
+    {
+      "name": "DCOUNTA",
+      "category": "Database",
+      "description": "Counts non-empty values in a table matching criteria.",
+      "volatile": false,
+      "anchorId": "formula-fn-dcounta"
+    },
+    {
+      "name": "DGET",
+      "category": "Database",
+      "description": "Returns a single matching value from a table.",
+      "volatile": false,
+      "anchorId": "formula-fn-dget"
+    },
+    {
+      "name": "DMAX",
+      "category": "Database",
+      "description": "Returns the maximum numeric value from a table.",
+      "volatile": false,
+      "anchorId": "formula-fn-dmax"
+    },
+    {
+      "name": "DMIN",
+      "category": "Database",
+      "description": "Returns the minimum numeric value from a table.",
+      "volatile": false,
+      "anchorId": "formula-fn-dmin"
+    },
+    {
+      "name": "DPRODUCT",
+      "category": "Database",
+      "description": "Returns the product of matching numeric values.",
+      "volatile": false,
+      "anchorId": "formula-fn-dproduct"
+    },
+    {
+      "name": "DSTDEV",
+      "category": "Database",
+      "description": "Returns the sample standard deviation of matching values.",
+      "volatile": false,
+      "anchorId": "formula-fn-dstdev"
+    },
+    {
+      "name": "DSTDEVP",
+      "category": "Database",
+      "description": "Returns the population standard deviation of matching values.",
+      "volatile": false,
+      "anchorId": "formula-fn-dstdevp"
+    },
+    {
+      "name": "DSUM",
+      "category": "Database",
+      "description": "Returns the sum of matching numeric values.",
+      "volatile": false,
+      "anchorId": "formula-fn-dsum"
+    },
+    {
+      "name": "DVAR",
+      "category": "Database",
+      "description": "Returns the sample variance of matching values.",
+      "volatile": false,
+      "anchorId": "formula-fn-dvar"
+    },
+    {
+      "name": "DVARP",
+      "category": "Database",
+      "description": "Returns the population variance of matching values.",
+      "volatile": false,
+      "anchorId": "formula-fn-dvarp"
+    }
+  ]
+}

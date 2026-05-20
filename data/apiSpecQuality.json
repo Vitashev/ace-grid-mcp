@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-05-20T00:24:09.606Z",
+  "propQuality": {
+    "checkedCount": 860,
+    "errorCount": 0,
+    "warningCount": 0,
+    "errorsPreview": [],
+    "warningsPreview": []
+  },
+  "typeQuality": {
+    "checkedCount": 231,
+    "warningCount": 0,
+    "warningsPreview": []
+  }
+}

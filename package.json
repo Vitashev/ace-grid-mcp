@@ -1,0 +1,48 @@
+{
+  "name": "@ace-grid/mcp",
+  "version": "0.1.0",
+  "description": "Local Model Context Protocol server for Ace Grid docs, API metadata, config validation, and optional account automation.",
+  "type": "module",
+  "bin": {
+    "ace-grid-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "data",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/index.ts",
+    "prepack": "npm run build",
+    "test": "vitest run",
+    "type-check": "tsc -p tsconfig.json --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Vitashev/ace-grid-mcp.git"
+  },
+  "keywords": [
+    "ace-grid",
+    "mcp",
+    "model-context-protocol",
+    "data-grid",
+    "react"
+  ],
+  "author": "Ace Grid",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.2",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.0.0",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
