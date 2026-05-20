@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ace Grid MCP Demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel">
+        <p class="eyebrow">Ace Grid MCP</p>
+        <h1>Local MCP verification demo</h1>
+        <p class="copy">
+          Ask a model to choose Ace Grid MCP tools, run them locally, and answer using the
+          tool results.
+        </p>
+
+        <div class="grid">
+          <label>
+            Google API key
+            <input id="apiKey" autocomplete="off" spellcheck="false" type="password" />
+          </label>
+          <label>
+            Model
+            <select id="model"></select>
+          </label>
+        </div>
+
+        <label>
+          Prompt
+          <textarea id="prompt" rows="7"></textarea>
+        </label>
+
+        <div class="actions">
+          <button id="run" type="button">Run prompt</button>
+          <button id="clear" class="secondary" type="button">Clear</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Test prompts</h2>
+        <div id="prompts" class="prompt-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Result</h2>
+        <pre id="result">Ready.</pre>
+      </section>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

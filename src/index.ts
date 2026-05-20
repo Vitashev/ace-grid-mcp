@@ -12,12 +12,48 @@ const server = new McpServer({
 
 server.tool(
   "ace_grid_search_docs",
-  "Search bundled Ace Grid API metadata and feature groups.",
+  "Search bundled Ace Grid docs pages, guide text, API metadata, and feature groups.",
   {
     limit: z.number().int().min(1).max(50).optional(),
     query: z.string().min(1),
   },
   async (input) => toolHandlers.searchDocs(input),
+);
+
+server.tool(
+  "ace_grid_search_api",
+  "Search only generated Ace Grid API metadata and feature groups.",
+  {
+    limit: z.number().int().min(1).max(50).optional(),
+    query: z.string().min(1),
+  },
+  async (input) => toolHandlers.searchApi(input),
+);
+
+server.tool(
+  "ace_grid_search_doc_pages",
+  "Search only written Ace Grid docs page content and guide text.",
+  {
+    limit: z.number().int().min(1).max(50).optional(),
+    query: z.string().min(1),
+  },
+  async (input) => toolHandlers.searchDocsPages(input),
+);
+
+server.tool(
+  "ace_grid_list_doc_pages",
+  "List bundled Ace Grid docs pages available to the MCP server.",
+  {},
+  async () => toolHandlers.listDocsPages(),
+);
+
+server.tool(
+  "ace_grid_get_doc_page",
+  "Return a bundled Ace Grid docs page by slug or path, including guide text and relevant props.",
+  {
+    slugOrPath: z.string().min(1),
+  },
+  async (input) => toolHandlers.getDocsPage(input),
 );
 
 server.tool(
@@ -55,6 +91,23 @@ server.tool(
     plan: z.enum(["Community", "Pro", "Enterprise"]).optional(),
   },
   async (input) => toolHandlers.generateReactExample(input),
+);
+
+server.tool(
+  "ace_grid_list_examples",
+  "List bundled framework examples available to the MCP server.",
+  {},
+  async () => toolHandlers.listExamples(),
+);
+
+server.tool(
+  "ace_grid_generate_framework_example",
+  "Generate a bundled Ace Grid framework example for react, angular, vue, svelte, or web-components.",
+  {
+    framework: z.enum(["react", "angular", "vue", "svelte", "web-components"]),
+    includeActions: z.boolean().optional(),
+  },
+  async (input) => toolHandlers.generateFrameworkExample(input),
 );
 
 server.tool(

@@ -1,11 +1,17 @@
 import {
   formulaSnapshot,
   generateReactExample,
+  getDocsPage,
+  getFrameworkExample,
   getProp,
   gridSnapshot,
   licenseSetupGuide,
+  listDocsPages,
   listFeatureGroups,
+  listFrameworkExamples,
   searchCatalog,
+  searchDocs,
+  searchEverything,
   validateGridConfig,
 } from "./catalog.js";
 import { PortalClient } from "./portalApi.js";
@@ -42,8 +48,22 @@ function textResult(text: string): ToolResult {
 export const toolHandlers = {
   searchDocs(input: { limit?: number; query: string }) {
     return jsonResult({
+      apiGeneratedAt: gridSnapshot.generatedAt,
+      docsGeneratedAt: undefined,
+      results: searchEverything(input.query, input.limit),
+    });
+  },
+
+  searchApi(input: { limit?: number; query: string }) {
+    return jsonResult({
       generatedAt: gridSnapshot.generatedAt,
       results: searchCatalog(input.query, input.limit),
+    });
+  },
+
+  searchDocsPages(input: { limit?: number; query: string }) {
+    return jsonResult({
+      results: searchDocs(input.query, input.limit),
     });
   },
 
@@ -53,6 +73,28 @@ export const toolHandlers = {
       formulaFunctionCount: formulaSnapshot.functionCount,
       groups: listFeatureGroups(),
       propCount: gridSnapshot.propCount,
+    });
+  },
+
+  listDocsPages() {
+    return jsonResult({
+      pages: listDocsPages(),
+    });
+  },
+
+  getDocsPage(input: { slugOrPath: string }) {
+    const page = getDocsPage(input.slugOrPath);
+    if (!page) {
+      return jsonResult({
+        ok: false,
+        message: `No Ace Grid docs page found for ${input.slugOrPath}.`,
+        suggestions: searchDocs(input.slugOrPath, 5),
+      });
+    }
+
+    return jsonResult({
+      ok: true,
+      page,
     });
   },
 
@@ -83,6 +125,28 @@ export const toolHandlers = {
     plan?: "Community" | "Pro" | "Enterprise";
   }) {
     return textResult(generateReactExample(input));
+  },
+
+  listExamples() {
+    return jsonResult({
+      examples: listFrameworkExamples(),
+    });
+  },
+
+  generateFrameworkExample(input: {
+    framework: string;
+    includeActions?: boolean;
+  }) {
+    const example = getFrameworkExample(input.framework);
+    if (!example) {
+      return jsonResult({
+        ok: false,
+        message: `No Ace Grid example found for framework ${input.framework}.`,
+        availableFrameworks: listFrameworkExamples().map((entry) => entry.framework),
+      });
+    }
+
+    return textResult(input.includeActions ? example.actionsSample : example.codeSample);
   },
 
   licenseSetup() {

@@ -36,6 +36,53 @@ export type FormulaSnapshot = {
   generatedAt: string;
 };
 
+export type DocsIndexEntry = {
+  category: string;
+  content: string;
+  guide: {
+    howToTry: string[];
+    implementationNotes: string[];
+    whatItMeans: string;
+    whenToUse: string[];
+  };
+  key: string;
+  path: string;
+  relevantProps: Array<{
+    description?: string;
+    path: string;
+    type: string;
+  }>;
+  slug: string;
+  summary: string;
+  title: string;
+  type: "feature" | "ai-suite";
+};
+
+export type FrameworkExample = {
+  actionsSample: string;
+  actionsSummary: string;
+  actionsTitle: string;
+  codeSample: string;
+  framework: string;
+  hostPackage: string;
+  label: string;
+  summary: string;
+};
+
+export type DocsIndex = {
+  entries: DocsIndexEntry[];
+  examples: FrameworkExample[];
+  generatedAt: string;
+  pages: Array<{
+    category: string;
+    path: string;
+    slug: string;
+    summary: string;
+    title: string;
+    type: "feature" | "ai-suite";
+  }>;
+};
+
 export type SearchResult = {
   description: string;
   featureGroup: string;
@@ -55,6 +102,7 @@ export const gridSnapshot = readJson<GridApiSnapshot>("../data/gridApiSnapshot.j
 export const formulaSnapshot = readJson<FormulaSnapshot>(
   "../data/formulaFunctionSnapshot.json",
 );
+export const docsIndex = readJson<DocsIndex>("../data/docsIndex.json");
 
 const propEntries = gridSnapshot.featureGroups.flatMap((group) =>
   group.props.map((prop) => ({
@@ -65,6 +113,11 @@ const propEntries = gridSnapshot.featureGroups.flatMap((group) =>
 
 export const propsByPath = new Map(propEntries.map((entry) => [entry.prop.path, entry]));
 export const groupsByKey = new Map(gridSnapshot.featureGroups.map((group) => [group.key, group]));
+export const docsBySlug = new Map(docsIndex.entries.map((entry) => [entry.slug, entry]));
+export const docsByPath = new Map(docsIndex.entries.map((entry) => [entry.path, entry]));
+export const examplesByFramework = new Map(
+  docsIndex.examples.map((example) => [example.framework, example]),
+);
 
 function normalizeSearchText(value: string): string {
   return value.toLowerCase().replace(/[^a-z0-9.]+/g, " ").trim();
@@ -114,6 +167,88 @@ export function searchCatalog(query: string, limit = 10): SearchResult[] {
     .filter((result) => result.score > 0)
     .sort((a, b) => b.score - a.score || a.label.localeCompare(b.label))
     .slice(0, Math.max(1, Math.min(limit, 50)));
+}
+
+export function searchDocs(query: string, limit = 10) {
+  const terms = normalizeSearchText(query).split(/\s+/).filter(Boolean);
+  if (terms.length === 0) return [];
+
+  return docsIndex.entries
+    .map((entry) => {
+      const text = normalizeSearchText(
+        `${entry.title} ${entry.summary} ${entry.category} ${entry.content}`,
+      );
+      const exactBoost =
+        entry.slug.toLowerCase() === query.toLowerCase() ||
+        entry.path.toLowerCase() === query.toLowerCase()
+          ? 20
+          : 0;
+      const propBoost = entry.relevantProps.some((prop) =>
+        prop.path.toLowerCase().includes(query.toLowerCase()),
+      )
+        ? 8
+        : 0;
+
+      return {
+        category: entry.category,
+        path: entry.path,
+        score: scoreText(text, terms) + exactBoost + propBoost,
+        slug: entry.slug,
+        summary: entry.summary,
+        title: entry.title,
+        type: entry.type,
+      };
+    })
+    .filter((result) => result.score > 0)
+    .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
+    .slice(0, Math.max(1, Math.min(limit, 50)));
+}
+
+export function searchEverything(query: string, limit = 10) {
+  const perSourceLimit = Math.max(1, Math.min(limit, 50));
+  const apiResults = searchCatalog(query, perSourceLimit).map((result) => ({
+    ...result,
+    source: "api" as const,
+  }));
+  const docsResults = searchDocs(query, perSourceLimit).map((result) => ({
+    ...result,
+    source: "docs" as const,
+  }));
+
+  return [...docsResults, ...apiResults]
+    .sort((a, b) => b.score - a.score || resultLabel(a).localeCompare(resultLabel(b)))
+    .slice(0, perSourceLimit);
+}
+
+function resultLabel(
+  result:
+    | ReturnType<typeof searchCatalog>[number]
+    | ReturnType<typeof searchDocs>[number],
+) {
+  return "label" in result ? result.label : result.title;
+}
+
+export function listDocsPages() {
+  return docsIndex.pages;
+}
+
+export function getDocsPage(slugOrPath: string) {
+  const normalizedPath = slugOrPath.startsWith("/") ? slugOrPath : `/docs/${slugOrPath}`;
+  return docsBySlug.get(slugOrPath) ?? docsByPath.get(normalizedPath);
+}
+
+export function listFrameworkExamples() {
+  return docsIndex.examples.map((example) => ({
+    actionsTitle: example.actionsTitle,
+    framework: example.framework,
+    hostPackage: example.hostPackage,
+    label: example.label,
+    summary: example.summary,
+  }));
+}
+
+export function getFrameworkExample(framework: string) {
+  return examplesByFramework.get(framework);
 }
 
 export function listFeatureGroups() {

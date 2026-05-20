@@ -2,10 +2,16 @@ import { describe, expect, it } from "vitest";
 
 import {
   generateReactExample,
+  getDocsPage,
+  getFrameworkExample,
   getProp,
   licenseSetupGuide,
+  listDocsPages,
   listFeatureGroups,
+  listFrameworkExamples,
   searchCatalog,
+  searchDocs,
+  searchEverything,
   validateGridConfig,
 } from "../src/catalog.js";
 import { PortalAuthError, PortalClient } from "../src/portalApi.js";
@@ -16,6 +22,41 @@ describe("Ace Grid catalog", () => {
     const results = searchCatalog("license app id", 5);
 
     expect(results.some((result) => result.path === "license.appId")).toBe(true);
+  });
+
+  it("searches bundled written docs pages", () => {
+    const results = searchDocs("server row model pivot", 10);
+
+    expect(results.some((result) => result.path.includes("serverRowModel"))).toBe(true);
+  });
+
+  it("searches API and docs together", () => {
+    const results = searchEverything("license domain", 10);
+
+    expect(results.some((result) => result.source === "api")).toBe(true);
+    expect(results.some((result) => result.source === "docs")).toBe(true);
+  });
+
+  it("lists and returns docs pages", () => {
+    expect(listDocsPages().length).toBeGreaterThan(30);
+    expect(getDocsPage("license")).toMatchObject({
+      path: "/docs/license",
+      title: "License",
+    });
+    expect(getDocsPage("/docs/schema")).toMatchObject({
+      category: "AI Suite",
+    });
+  });
+
+  it("lists and returns framework examples", () => {
+    expect(listFrameworkExamples().map((example) => example.framework)).toEqual([
+      "react",
+      "angular",
+      "vue",
+      "svelte",
+      "web-components",
+    ]);
+    expect(getFrameworkExample("vue")?.codeSample).toContain("@ace-grid/vue");
   });
 
   it("lists feature groups from the bundled snapshot", () => {
@@ -98,6 +139,22 @@ describe("tool handlers", () => {
         path: "layout.height",
       },
     });
+  });
+
+  it("returns docs pages and framework examples through MCP handlers", () => {
+    expect(
+      JSON.parse(toolHandlers.getDocsPage({ slugOrPath: "validation" }).content[0].text),
+    ).toMatchObject({
+      ok: true,
+      page: {
+        title: "Validation",
+      },
+    });
+    expect(
+      toolHandlers.generateFrameworkExample({
+        framework: "svelte",
+      }).content[0].text,
+    ).toContain("@ace-grid/svelte");
   });
 });
 
