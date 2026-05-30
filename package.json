@@ -1,7 +1,7 @@
 {
   "name": "@ace-grid/mcp",
-  "version": "1.0.6",
-  "description": "Model Context Protocol server for Ace Grid docs, API metadata, config validation, migration help, and optional account automation.",
+  "version": "1.0.8",
+  "description": "Model Context Protocol server for Ace Grid docs, API metadata, config validation, migration help, and framework examples.",
   "type": "module",
   "bin": {
     "ace-grid-mcp": "./dist/index.js"
@@ -13,7 +13,8 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "clean": "node scripts/clean-dist.mjs",
     "demo": "tsx src/demoServer.ts",
     "dev": "tsx src/index.ts",
     "prepack": "npm run build",

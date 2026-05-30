@@ -18,7 +18,6 @@ import {
   type AceGridFramework,
   type AceGridTier,
 } from "./catalog.js";
-import { PortalClient } from "./portalApi.js";
 
 export type ToolResult = {
   content: Array<{
@@ -174,57 +173,5 @@ export const toolHandlers = {
 
   licenseSetup() {
     return jsonResult(licenseSetupGuide());
-  },
-
-  async accountStatus(input: { token?: string } = {}) {
-    const client = new PortalClient({ token: input.token });
-    const [me, entitlements, subscriptions] = await Promise.all([
-      client.request("/portal/me"),
-      client.request("/portal/entitlements"),
-      client.request("/portal/subscriptions"),
-    ]);
-
-    return jsonResult({
-      me,
-      entitlements,
-      subscriptions,
-    });
-  },
-
-  async listApps(input: { token?: string } = {}) {
-    const client = new PortalClient({ token: input.token });
-    return jsonResult(await client.request("/portal/apps"));
-  },
-
-  async createApp(input: { allowedDomains?: string[]; name: string; token?: string }) {
-    const client = new PortalClient({ token: input.token });
-    return jsonResult(
-      await client.request("/portal/apps", {
-        body: {
-          allowedDomains: input.allowedDomains ?? [],
-          name: input.name,
-        },
-        method: "POST",
-      }),
-    );
-  },
-
-  async listLicenseKeys(input: { appId: string; token?: string }) {
-    const client = new PortalClient({ token: input.token });
-    return jsonResult(
-      await client.request(`/portal/apps/${encodeURIComponent(input.appId)}/keys`),
-    );
-  },
-
-  async createLicenseKey(input: { appId: string; label?: string; token?: string }) {
-    const client = new PortalClient({ token: input.token });
-    return jsonResult(
-      await client.request(`/portal/apps/${encodeURIComponent(input.appId)}/keys`, {
-        body: {
-          label: input.label,
-        },
-        method: "POST",
-      }),
-    );
   },
 };

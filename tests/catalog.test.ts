@@ -16,7 +16,6 @@ import {
   searchEverything,
   validateGridConfig,
 } from "../src/catalog.js";
-import { PortalAuthError, PortalClient } from "../src/portalApi.js";
 import { toolHandlers } from "../src/tools.js";
 
 describe("Ace Grid catalog", () => {
@@ -226,20 +225,5 @@ describe("tool handlers", () => {
     expect(generated.code).toContain("@ace-grid/wc");
     expect(generated.code).toContain("@ace-grid/pro");
     expect(generated.validation.ok).toBe(true);
-  });
-});
-
-describe("portal client", () => {
-  it("requires explicit auth for account operations", async () => {
-    const originalToken = process.env.ACE_GRID_PORTAL_TOKEN;
-    delete process.env.ACE_GRID_PORTAL_TOKEN;
-
-    await expect(new PortalClient().request("/portal/me")).rejects.toBeInstanceOf(
-      PortalAuthError,
-    );
-
-    if (originalToken) {
-      process.env.ACE_GRID_PORTAL_TOKEN = originalToken;
-    }
   });
 });

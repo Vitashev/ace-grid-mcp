@@ -1,6 +1,6 @@
 # @ace-grid/mcp
 
-Ace Grid MCP is a local Model Context Protocol server for Ace Grid documentation, API metadata, config validation, migration help, framework example generation, and optional account/license automation.
+Ace Grid MCP is a local Model Context Protocol server for Ace Grid documentation, API metadata, config validation, migration help, and framework example generation.
 
 It is designed for MCP-compatible AI coding tools such as Claude Desktop, Cursor, Codex, and other clients that can launch a stdio MCP server.
 
@@ -44,16 +44,7 @@ For local development from this repository:
 
 ## Local-first behavior
 
-Documentation, API search, config validation, implementation planning, and example generation use bundled metadata and run locally. Account tools call the Ace Grid portal API only when `ACE_GRID_PORTAL_TOKEN` is configured.
-
-```bash
-ACE_GRID_PORTAL_TOKEN=eyJ... ace-grid-mcp
-```
-
-Optional environment variables:
-
-- `ACE_GRID_API_BASE_URL`: Ace Grid API base URL. Defaults to `https://api.ace-grid.com`.
-- `ACE_GRID_PORTAL_TOKEN`: bearer token for authenticated account, app, and license-key operations.
+Documentation, API search, config validation, implementation planning, and example generation use bundled metadata and run locally. No Ace Grid account or Portal token is required.
 
 ## Tools
 
@@ -71,11 +62,6 @@ Optional environment variables:
 - `ace_grid_list_examples`: list bundled framework examples.
 - `ace_grid_generate_framework_example`: generate a bundled framework example.
 - `ace_grid_license_setup`: explain license config and public-key behavior.
-- `ace_grid_account_status`: optional authenticated account overview.
-- `ace_grid_list_apps`: optional authenticated app listing.
-- `ace_grid_create_app`: optional authenticated app creation.
-- `ace_grid_list_license_keys`: optional authenticated key listing.
-- `ace_grid_create_license_key`: optional authenticated key creation.
 
 ## Publishing checklist
 

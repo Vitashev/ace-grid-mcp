@@ -7,7 +7,7 @@ import { toolHandlers } from "./tools.js";
 
 const server = new McpServer({
   name: "ace-grid-mcp",
-  version: "0.1.0",
+  version: "1.0.6",
 });
 
 server.tool(
@@ -140,56 +140,6 @@ server.tool(
   "Explain Ace Grid license config, domain auto-detection, and public signing-key behavior.",
   {},
   async () => toolHandlers.licenseSetup(),
-);
-
-server.tool(
-  "ace_grid_account_status",
-  "Fetch authenticated Ace Grid account, entitlement, and subscription status. Requires ACE_GRID_PORTAL_TOKEN or token input.",
-  {
-    token: z.string().optional(),
-  },
-  async (input) => toolHandlers.accountStatus(input),
-);
-
-server.tool(
-  "ace_grid_list_apps",
-  "List authenticated Ace Grid license apps. Requires ACE_GRID_PORTAL_TOKEN or token input.",
-  {
-    token: z.string().optional(),
-  },
-  async (input) => toolHandlers.listApps(input),
-);
-
-server.tool(
-  "ace_grid_create_app",
-  "Create an authenticated Ace Grid license app. Requires ACE_GRID_PORTAL_TOKEN or token input.",
-  {
-    allowedDomains: z.array(z.string()).optional(),
-    name: z.string().min(1),
-    token: z.string().optional(),
-  },
-  async (input) => toolHandlers.createApp(input),
-);
-
-server.tool(
-  "ace_grid_list_license_keys",
-  "List license keys for an authenticated Ace Grid app. Requires ACE_GRID_PORTAL_TOKEN or token input.",
-  {
-    appId: z.string().min(1),
-    token: z.string().optional(),
-  },
-  async (input) => toolHandlers.listLicenseKeys(input),
-);
-
-server.tool(
-  "ace_grid_create_license_key",
-  "Create a license key for an authenticated Ace Grid app. Requires ACE_GRID_PORTAL_TOKEN or token input.",
-  {
-    appId: z.string().min(1),
-    label: z.string().optional(),
-    token: z.string().optional(),
-  },
-  async (input) => toolHandlers.createLicenseKey(input),
 );
 
 const transport = new StdioServerTransport();
