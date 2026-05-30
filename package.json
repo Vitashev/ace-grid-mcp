@@ -1,7 +1,7 @@
 {
   "name": "@ace-grid/mcp",
-  "version": "0.1.0",
-  "description": "Local Model Context Protocol server for Ace Grid docs, API metadata, config validation, and optional account automation.",
+  "version": "1.0.6",
+  "description": "Model Context Protocol server for Ace Grid docs, API metadata, config validation, migration help, and optional account automation.",
   "type": "module",
   "bin": {
     "ace-grid-mcp": "./dist/index.js"
@@ -30,7 +30,8 @@
     "mcp",
     "model-context-protocol",
     "data-grid",
-    "react"
+    "react",
+    "ai"
   ],
   "author": "Ace Grid",
   "license": "MIT",
@@ -46,5 +47,12 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "bugs": {
+    "url": "https://github.com/Vitashev/ace-grid-mcp/issues"
+  },
+  "homepage": "https://ace-grid.com",
+  "publishConfig": {
+    "access": "public"
   }
 }

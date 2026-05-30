@@ -162,27 +162,27 @@ const FEATURE_ALIASES: Record<string, string[]> = {
 
 const FRAMEWORK_PACKAGES: Record<AceGridFramework, Record<AceGridTier, string[]>> = {
   angular: {
-    Community: ["@ace-grid/angular", "ace-grid"],
+    Community: ["@ace-grid/angular", "@ace-grid/core"],
     Enterprise: ["@ace-grid/angular", "@ace-grid/enterprise"],
     Pro: ["@ace-grid/angular", "@ace-grid/pro"],
   },
   react: {
-    Community: ["ace-grid"],
+    Community: ["@ace-grid/core"],
     Enterprise: ["@ace-grid/enterprise"],
     Pro: ["@ace-grid/pro"],
   },
   svelte: {
-    Community: ["@ace-grid/svelte", "ace-grid"],
+    Community: ["@ace-grid/svelte", "@ace-grid/core"],
     Enterprise: ["@ace-grid/svelte", "@ace-grid/enterprise"],
     Pro: ["@ace-grid/svelte", "@ace-grid/pro"],
   },
   vue: {
-    Community: ["@ace-grid/vue", "ace-grid"],
+    Community: ["@ace-grid/vue", "@ace-grid/core"],
     Enterprise: ["@ace-grid/vue", "@ace-grid/enterprise"],
     Pro: ["@ace-grid/vue", "@ace-grid/pro"],
   },
   "web-components": {
-    Community: ["@ace-grid/wc", "ace-grid"],
+    Community: ["@ace-grid/wc", "@ace-grid/core"],
     Enterprise: ["@ace-grid/wc", "@ace-grid/enterprise"],
     Pro: ["@ace-grid/wc", "@ace-grid/pro"],
   },
@@ -604,14 +604,17 @@ function serializeCode(value: unknown, indent = 0): string {
 
 function frameworkImport(framework: AceGridFramework, tier: AceGridTier) {
   const packageName =
-    tier === "Enterprise" ? "@ace-grid/enterprise" : tier === "Pro" ? "@ace-grid/pro" : "ace-grid";
+    tier === "Enterprise" ? "@ace-grid/enterprise" : tier === "Pro" ? "@ace-grid/pro" : "@ace-grid/core";
+  const tierPath = tier === "Enterprise" ? "enterprise" : tier === "Pro" ? "pro" : "core";
 
-  if (framework === "angular") return `import { AceGridAngular } from "@ace-grid/angular";`;
-  if (framework === "vue") return `import { AceGrid } from "@ace-grid/vue";`;
-  if (framework === "svelte") return `import AceGrid from "@ace-grid/svelte";`;
+  if (framework === "angular") return `import { AceGridComponent } from "@ace-grid/angular/${tierPath}";`;
+  if (framework === "vue") return `import AceGrid from "@ace-grid/vue/${tierPath}";`;
+  if (framework === "svelte") return `import AceGrid from "@ace-grid/svelte/${tierPath}";`;
   if (framework === "web-components") {
-    const suffix = tier === "Enterprise" ? "enterprise" : tier === "Pro" ? "pro" : "core";
-    return `import "@ace-grid/wc/${suffix}";`;
+    return `import { defineAceGridElement } from "@ace-grid/wc";
+import { Grid } from "${packageName}";
+
+defineAceGridElement("ace-grid", { Grid });`;
   }
 
   return `import { Grid } from "${packageName}";`;
@@ -630,11 +633,11 @@ function generateCodeForFramework(input: ImplementationInput, plan: Implementati
   const notes = implementationNotes(plan);
 
   if (plan.framework === "angular") {
-    return `${frameworkImport(plan.framework, plan.requiredTier)}\nimport { Component } from "@angular/core";\n\n${notes}@Component({\n  selector: "app-ace-grid",\n  standalone: true,\n  imports: [AceGridAngular],\n  template: '<ace-grid-angular [props]="gridProps"></ace-grid-angular>',\n})\nexport class AceGridExampleComponent {\n  gridProps = ${configCode};\n}\n`;
+    return `${frameworkImport(plan.framework, plan.requiredTier)}\nimport { Component } from "@angular/core";\n\n${notes}@Component({\n  selector: "app-ace-grid",\n  standalone: true,\n  imports: [AceGridComponent],\n  template: '<ace-grid-angular [props]="gridProps"></ace-grid-angular>',\n})\nexport class AceGridExampleComponent {\n  gridProps = ${configCode};\n}\n`;
   }
 
   if (plan.framework === "vue") {
-    return `<script setup lang="ts">\n${frameworkImport(plan.framework, plan.requiredTier)}\n\n${notes}const gridProps = ${configCode};\n</script>\n\n<template>\n  <AceGrid v-bind="gridProps" />\n</template>\n`;
+    return `<script setup lang="ts">\n${frameworkImport(plan.framework, plan.requiredTier)}\n\n${notes}const gridProps = ${configCode};\n</script>\n\n<template>\n  <AceGrid :props="gridProps" />\n</template>\n`;
   }
 
   if (plan.framework === "svelte") {
@@ -642,7 +645,7 @@ function generateCodeForFramework(input: ImplementationInput, plan: Implementati
       .split("\n")
       .filter(Boolean)
       .map((line) => `  ${line}`)
-      .join("\n")}\n  const gridProps = ${configCode.replace(/\n/g, "\n  ")};\n</script>\n\n<AceGrid {...gridProps} />\n`;
+      .join("\n")}\n  const gridProps = ${configCode.replace(/\n/g, "\n  ")};\n</script>\n\n<AceGrid props={gridProps} />\n`;
   }
 
   if (plan.framework === "web-components") {

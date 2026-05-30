@@ -4168,57 +4168,57 @@
   ],
   "examples": [
     {
-      "actionsSample": "import { Grid, useGrid } from \"@ace-grid/enterprise\";\nimport \"@ace-grid/enterprise/styles.css\";\n\nexport function RevenueGridWithActions() {\n  const [rows, api] = useGrid({\n    columns,\n    initialRows: seedRows,\n    sortMode: \"client\",\n  });\n\n  const gridProps = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n\n  return (\n    <>\n      <button\n        type=\"button\"\n        onClick={() =>\n          api.appendRow({\n            data: {\n              make: { value: \"Tesla\" },\n              status: { value: \"Draft\" },\n            },\n          })\n        }\n      >\n        Add row\n      </button>\n\n      <Grid {...gridProps} />\n    </>\n  );\n}",
+      "actionsSample": "import { Grid, useGrid } from \"@ace-grid/enterprise\";\n\nexport function RevenueGridWithActions() {\n  const [rows, api] = useGrid({\n    columns,\n    initialRows: seedRows,\n    sortMode: \"client\",\n  });\n\n  const gridProps = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n\n  return (\n    <>\n      <button\n        type=\"button\"\n        onClick={() =>\n          api.appendRow({\n            data: {\n              make: { value: \"Tesla\" },\n              status: { value: \"Draft\" },\n            },\n          })\n        }\n      >\n        Add row\n      </button>\n\n      <Grid {...gridProps} />\n    </>\n  );\n}",
       "actionsSummary": "Use `useGrid` to own the rows and call grid actions from the same component.",
       "actionsTitle": "Call actions from React",
-      "codeSample": "npm install @ace-grid/enterprise\n\nimport { Grid } from \"@ace-grid/enterprise\";\nimport \"@ace-grid/enterprise/styles.css\";\n\nconst gridProps = {\n  data: {\n    rows,\n    columns,\n  },\n  layout: {\n    width: 960,\n    height: 420,\n  },\n};\n\nexport function RevenueGrid() {\n  return <Grid {...gridProps} />;\n}",
+      "codeSample": "npm install @ace-grid/enterprise\n\nimport { Grid } from \"@ace-grid/enterprise\";\n\nconst gridProps = {\n  data: {\n    rows,\n    columns,\n  },\n  layout: {\n    width: 960,\n    height: 420,\n  },\n};\n\nexport function RevenueGrid() {\n  return <Grid {...gridProps} />;\n}",
       "framework": "react",
       "hostPackage": "Direct runtime import",
       "label": "React",
       "summary": "React mounts straight from the runtime tier, so you only choose the tier package and optional schema tooling."
     },
     {
-      "actionsSample": "import { Component, ViewChild } from \"@angular/core\";\nimport { AceGridComponent } from \"@ace-grid/angular\";\n\n@Component({\n  selector: \"app-revenue-grid\",\n  template: `\n    <button type=\"button\" (click)=\"addRow()\">Add row</button>\n    <ace-grid-angular #grid [props]=\"gridProps\" />\n  `,\n})\nexport class RevenueGridComponent {\n  @ViewChild(\"grid\") grid?: AceGridComponent;\n  gridProps = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n\n  addRow() {\n    this.grid?.getActions()?.appendRow({\n      data: {\n        make: { value: \"Tesla\" },\n        status: { value: \"Draft\" },\n      },\n    });\n  }\n}",
+      "actionsSample": "import { Component, ViewChild } from \"@angular/core\";\nimport { AceGridComponent } from \"@ace-grid/angular/enterprise\";\n\n@Component({\n  selector: \"app-revenue-grid\",\n  template: `\n    <button type=\"button\" (click)=\"addRow()\">Add row</button>\n    <ace-grid-angular #grid [props]=\"gridProps\" />\n  `,\n})\nexport class RevenueGridComponent {\n  @ViewChild(\"grid\") grid?: AceGridComponent;\n  gridProps = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n\n  addRow() {\n    this.grid?.getActions()?.appendRow({\n      data: {\n        make: { value: \"Tesla\" },\n        status: { value: \"Draft\" },\n      },\n    });\n  }\n}",
       "actionsSummary": "Use `ViewChild` to get the wrapper instance, then call `getActions()` from your component.",
       "actionsTitle": "Call actions from Angular",
-      "codeSample": "npm install @ace-grid/angular @ace-grid/enterprise\n\nimport { Component } from \"@angular/core\";\n\n@Component({\n  selector: \"app-revenue-grid\",\n  template: `\n    <ace-grid-angular [props]=\"gridProps\" />\n  `,\n})\nexport class RevenueGridComponent {\n  gridProps = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n}",
+      "codeSample": "npm install @ace-grid/angular @ace-grid/enterprise @angular/core @angular/common react react-dom\n\nimport { Component } from \"@angular/core\";\nimport { AceGridComponent } from \"@ace-grid/angular/enterprise\";\n\n@Component({\n  selector: \"app-revenue-grid\",\n  template: `\n    <ace-grid-angular [props]=\"gridProps\" />\n  `,\n})\nexport class RevenueGridComponent {\n  gridProps = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n}",
       "framework": "angular",
       "hostPackage": "@ace-grid/angular",
       "label": "Angular",
-      "summary": "Angular uses the dedicated wrapper package while keeping the same runtime tiers and schema add-ons behind it."
+      "summary": "Angular uses one tier-neutral wrapper package. Import `@ace-grid/angular/core`, `/pro`, or `/enterprise` from that package to bind the matching runtime tier."
     },
     {
-      "actionsSample": "<script setup lang=\"ts\">\nimport { ref } from \"vue\";\nimport { AceGrid } from \"@ace-grid/vue\";\n\nconst grid = ref<any>(null);\nconst gridProps = {\n  data: {\n    rows,\n    columns,\n  },\n  layout: {\n    width: 960,\n    height: 420,\n  },\n};\n\nfunction addRow() {\n  grid.value?.getActions()?.appendRow({\n    data: {\n      make: { value: \"Tesla\" },\n      status: { value: \"Draft\" },\n    },\n  });\n}\n</script>\n\n<template>\n  <button @click=\"addRow\">Add row</button>\n  <AceGrid ref=\"grid\" :props=\"gridProps\" />\n</template>",
+      "actionsSample": "<script setup lang=\"ts\">\nimport { ref } from \"vue\";\nimport AceGrid from \"@ace-grid/vue/enterprise\";\n\nconst grid = ref<any>(null);\nconst gridProps = {\n  data: {\n    rows,\n    columns,\n  },\n  layout: {\n    width: 960,\n    height: 420,\n  },\n};\n\nfunction addRow() {\n  grid.value?.getActions()?.appendRow({\n    data: {\n      make: { value: \"Tesla\" },\n      status: { value: \"Draft\" },\n    },\n  });\n}\n</script>\n\n<template>\n  <button @click=\"addRow\">Add row</button>\n  <AceGrid ref=\"grid\" :props=\"gridProps\" />\n</template>",
       "actionsSummary": "Use a component ref and call `getActions()` from your Vue event handlers.",
       "actionsTitle": "Call actions from Vue",
-      "codeSample": "npm install @ace-grid/vue @ace-grid/enterprise\n\n<script setup lang=\"ts\">\nimport { AceGrid } from \"@ace-grid/vue\";\n\nconst gridProps = {\n  data: {\n    rows,\n    columns,\n  },\n  layout: {\n    width: 960,\n    height: 420,\n  },\n};\n</script>\n\n<template>\n  <AceGrid :props=\"gridProps\" />\n</template>",
+      "codeSample": "npm install @ace-grid/vue @ace-grid/enterprise vue react react-dom\n\n<script setup lang=\"ts\">\nimport AceGrid from \"@ace-grid/vue/enterprise\";\n\nconst gridProps = {\n  data: {\n    rows,\n    columns,\n  },\n  layout: {\n    width: 960,\n    height: 420,\n  },\n};\n</script>\n\n<template>\n  <AceGrid :props=\"gridProps\" />\n</template>",
       "framework": "vue",
       "hostPackage": "@ace-grid/vue",
       "label": "Vue",
-      "summary": "Vue ships through the wrapper package, but the runtime contract and enterprise tier model stay the same."
+      "summary": "Vue uses one tier-neutral wrapper package. Import `@ace-grid/vue/core`, `/pro`, or `/enterprise` from that package to bind the matching runtime tier."
     },
     {
-      "actionsSample": "<script lang=\"ts\">\n  import AceGrid from \"@ace-grid/svelte\";\n\n  let grid: any;\n  const gridProps = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n\n  function addRow() {\n    grid?.getActions()?.appendRow({\n      data: {\n        make: { value: \"Tesla\" },\n        status: { value: \"Draft\" },\n      },\n    });\n  }\n</script>\n\n<button on:click={addRow}>Add row</button>\n<AceGrid bind:this={grid} props={gridProps} />",
+      "actionsSample": "<script lang=\"ts\">\n  import AceGrid from \"@ace-grid/svelte/enterprise\";\n\n  let grid: any;\n  const gridProps = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n\n  function addRow() {\n    grid?.getActions()?.appendRow({\n      data: {\n        make: { value: \"Tesla\" },\n        status: { value: \"Draft\" },\n      },\n    });\n  }\n</script>\n\n<button on:click={addRow}>Add row</button>\n<AceGrid bind:this={grid} props={gridProps} />",
       "actionsSummary": "Bind the component instance and call `getActions()` from your Svelte handlers.",
       "actionsTitle": "Call actions from Svelte",
-      "codeSample": "npm install @ace-grid/svelte @ace-grid/enterprise\n\n<script lang=\"ts\">\n  import AceGrid from \"@ace-grid/svelte\";\n\n  const gridProps = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n</script>\n\n<AceGrid props={gridProps} />",
+      "codeSample": "npm install @ace-grid/svelte @ace-grid/enterprise svelte react react-dom\n\n<script lang=\"ts\">\n  import AceGrid from \"@ace-grid/svelte/enterprise\";\n\n  const gridProps = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n</script>\n\n<AceGrid props={gridProps} />",
       "framework": "svelte",
       "hostPackage": "@ace-grid/svelte",
       "label": "Svelte",
-      "summary": "Svelte uses its own host adapter while still consuming the shared runtime tiers and optional schema packages."
+      "summary": "Svelte uses one tier-neutral wrapper package. Import `@ace-grid/svelte/core`, `/pro`, or `/enterprise` from that package to bind the matching runtime tier."
     },
     {
-      "actionsSample": "import \"@ace-grid/wc/enterprise\";\n\nconst grid = document.querySelector(\"#revenue-grid\");\nconst addButton = document.querySelector(\"#add-row\");\n\nif (grid) {\n  grid.props = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n}\n\naddButton?.addEventListener(\"click\", () => {\n  grid?.getActions()?.appendRow({\n    data: {\n      make: { value: \"Tesla\" },\n      status: { value: \"Draft\" },\n    },\n  });\n});",
+      "actionsSample": "import { defineAceGridElement } from \"@ace-grid/wc\";\nimport { Grid } from \"@ace-grid/enterprise\";\n\ndefineAceGridElement(\"ace-grid\", { Grid });\n\nconst grid = document.querySelector(\"#revenue-grid\");\nconst addButton = document.querySelector(\"#add-row\");\n\nif (grid) {\n  grid.props = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n}\n\naddButton?.addEventListener(\"click\", () => {\n  grid?.getActions()?.appendRow({\n    data: {\n      make: { value: \"Tesla\" },\n      status: { value: \"Draft\" },\n    },\n  });\n});",
       "actionsSummary": "Read the custom element instance and call `getActions()` directly.",
       "actionsTitle": "Call actions from Web Components",
-      "codeSample": "npm install @ace-grid/wc @ace-grid/enterprise\n\nimport \"@ace-grid/wc/enterprise\";\n\ndocument.body.innerHTML = `\n  <ace-grid\n    id=\"revenue-grid\"\n  ></ace-grid>\n`;\n\nconst grid = document.querySelector(\"#revenue-grid\");\n\nif (grid) {\n  grid.props = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n}",
+      "codeSample": "npm install @ace-grid/wc @ace-grid/enterprise react react-dom\n\nimport { defineAceGridElement } from \"@ace-grid/wc\";\nimport { Grid } from \"@ace-grid/enterprise\";\n\ndefineAceGridElement(\"ace-grid\", { Grid });\n\ndocument.body.innerHTML = `\n  <ace-grid\n    id=\"revenue-grid\"\n  ></ace-grid>\n`;\n\nconst grid = document.querySelector(\"#revenue-grid\");\n\nif (grid) {\n  grid.props = {\n    data: {\n      rows,\n      columns,\n    },\n    layout: {\n      width: 960,\n      height: 420,\n    },\n  };\n}",
       "framework": "web-components",
       "hostPackage": "@ace-grid/wc",
       "label": "Web Components",
-      "summary": "Web Components exposes the runtime for framework-neutral surfaces that still want the same tiered package model."
+      "summary": "Web Components uses one runtime-neutral wrapper package. Register the custom element with `@ace-grid/core`, `@ace-grid/pro`, or `@ace-grid/enterprise` explicitly."
     }
   ],
-  "generatedAt": "2026-05-20T17:20:03.840Z",
+  "generatedAt": "2026-05-30T06:12:06.817Z",
   "pages": [
     {
       "category": "Foundation",

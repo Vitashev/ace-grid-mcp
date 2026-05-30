@@ -223,7 +223,8 @@ describe("tool handlers", () => {
         tier: "Pro",
       }).content[0].text,
     );
-    expect(generated.code).toContain("@ace-grid/wc/pro");
+    expect(generated.code).toContain("@ace-grid/wc");
+    expect(generated.code).toContain("@ace-grid/pro");
     expect(generated.validation.ok).toBe(true);
   });
 });
