@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-05-20T00:24:07.049Z",
+  "generatedAt": "2026-06-13T20:16:11.265Z",
   "rootInterface": "GridProps",
   "featureGroupCount": 32,
-  "propCount": 862,
+  "propCount": 864,
   "featureGroups": [
     {
       "key": "license",
@@ -626,8 +626,8 @@
       "description": "Virtualization strategy flags",
       "typeName": "GridVirtualProps",
       "optional": true,
-      "directPropCount": 3,
-      "propCount": 3,
+      "directPropCount": 5,
+      "propCount": 5,
       "props": [
         {
           "name": "enableVirtualization",
@@ -649,7 +649,23 @@
           "name": "enableCellContentVirtualization",
           "path": "virtual.enableCellContentVirtualization",
           "type": "boolean",
-          "description": "",
+          "description": "Defers heavy inner cell content until visible. Disabled by default.",
+          "optional": true,
+          "depth": 1
+        },
+        {
+          "name": "rowBufferPx",
+          "path": "virtual.rowBufferPx",
+          "type": "number",
+          "description": "Extra vertical pixels rendered before and after the visible row window.",
+          "optional": true,
+          "depth": 1
+        },
+        {
+          "name": "columnBufferPx",
+          "path": "virtual.columnBufferPx",
+          "type": "number",
+          "description": "Extra horizontal pixels rendered before and after the visible column window.",
           "optional": true,
           "depth": 1
         }
@@ -8883,7 +8899,7 @@
       "kind": "interface",
       "description": "VIRTUALIZATION",
       "file": "src/types.ts",
-      "code": "export interface GridVirtualProps {\n  enableVirtualization?: boolean;\n  enableHorizontalVirtualization?: boolean;\n  enableCellContentVirtualization?: boolean;\n}"
+      "code": "export interface GridVirtualProps {\n  enableVirtualization?: boolean;\n  enableHorizontalVirtualization?: boolean;\n  /** Defers heavy inner cell content until visible. Disabled by default. */\n  enableCellContentVirtualization?: boolean;\n  /** Extra vertical pixels rendered before and after the visible row window. */\n  rowBufferPx?: number;\n  /** Extra horizontal pixels rendered before and after the visible column window. */\n  columnBufferPx?: number;\n}"
     },
     "GridRowsProps": {
       "name": "GridRowsProps",

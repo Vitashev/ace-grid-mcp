@@ -1,6 +1,6 @@
 {
   "name": "@ace-grid/mcp",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Model Context Protocol server for Ace Grid docs, API metadata, config validation, migration help, and framework examples.",
   "type": "module",
   "bin": {

@@ -4124,17 +4124,18 @@
     },
     {
       "category": "Foundation",
-      "content": "Virtual\nVirtual\nFoundation guide\nVirtualization controls how much of the grid stays mounted at once. In most cases, leave it on.\nUse the live example to compare settings, then lift the matching `virtual` block into your own gridProps object.\nFoundation\nVirtual\nVirtualization strategy flags\nVirtualization controls how much of the grid stays mounted at once. It reduces browser work on long or wide grids.\nKeep all three virtual settings on for most production grids.\nOnly turn one off when a custom cell or embedded widget truly needs a wider mounted window.\nTurn row virtualization off and compare the mounted row count against the default mode.\nTurn horizontal virtualization off and compare the mounted column count on the same wide grid.\nTurn cell-content virtualization off and compare how many heavy cells stay mounted.\nTreat virtualization as a performance setting, not a visual feature.\nValidate custom cell renderers early. They are the most common reason teams try to change virtualization defaults.\nvirtual.enableVirtualization\nenableVirtualization\nboolean\nvirtual.enableHorizontalVirtualization\nenableHorizontalVirtualization\nboolean\nvirtual.enableCellContentVirtualization\nenableCellContentVirtualization\nboolean",
+      "content": "Virtual\nVirtual\nFoundation guide\nVirtualization controls how much of the grid stays mounted at once. Keep it on in most cases, and tune row or column buffers only when measured scrolling behavior requires it.\nUse the live example to compare settings, then lift the matching `virtual` block into your own gridProps object.\nFoundation\nVirtual\nVirtualization strategy flags\nVirtualization controls how much of the grid stays mounted at once. It reduces browser work on long or wide grids.\nKeep row and horizontal virtualization on for most production grids. Cell-content virtualization is off by default and should be enabled only for measurably expensive cell renderers.\nStart with the default buffers. Increase them only when fast scrolling exposes blank work, or reduce them when mounted DOM cost is the bottleneck.\nTurn row virtualization off and compare the mounted row count against the default mode.\nTurn horizontal virtualization off and compare the mounted column count on the same wide grid.\nTurn cell-content virtualization on and compare how many heavy cells stay mounted.\nChange row and column buffers separately, then repeat the same wheel, trackpad, keyboard, and scrollbar-drag tests.\nTreat virtualization as a performance setting, not a visual feature.\nValidate custom cell renderers early. They are the most common reason teams try to change virtualization defaults.\nvirtual.enableVirtualization\nenableVirtualization\nboolean\nvirtual.enableHorizontalVirtualization\nenableHorizontalVirtualization\nboolean\nvirtual.enableCellContentVirtualization\nenableCellContentVirtualization\nboolean\nDefers heavy inner cell content until visible. Disabled by default.\nvirtual.rowBufferPx\nrowBufferPx\nnumber\nExtra vertical pixels rendered before and after the visible row window.\nvirtual.columnBufferPx\ncolumnBufferPx\nnumber\nExtra horizontal pixels rendered before and after the visible column window.",
       "guide": {
         "whatItMeans": "Virtualization controls how much of the grid stays mounted at once. It reduces browser work on long or wide grids.",
         "whenToUse": [
-          "Keep all three virtual settings on for most production grids.",
-          "Only turn one off when a custom cell or embedded widget truly needs a wider mounted window."
+          "Keep row and horizontal virtualization on for most production grids. Cell-content virtualization is off by default and should be enabled only for measurably expensive cell renderers.",
+          "Start with the default buffers. Increase them only when fast scrolling exposes blank work, or reduce them when mounted DOM cost is the bottleneck."
         ],
         "howToTry": [
           "Turn row virtualization off and compare the mounted row count against the default mode.",
           "Turn horizontal virtualization off and compare the mounted column count on the same wide grid.",
-          "Turn cell-content virtualization off and compare how many heavy cells stay mounted."
+          "Turn cell-content virtualization on and compare how many heavy cells stay mounted.",
+          "Change row and column buffers separately, then repeat the same wheel, trackpad, keyboard, and scrollbar-drag tests."
         ],
         "implementationNotes": [
           "Treat virtualization as a performance setting, not a visual feature.",
@@ -4155,9 +4156,19 @@
           "type": "boolean"
         },
         {
-          "description": "",
+          "description": "Defers heavy inner cell content until visible. Disabled by default.",
           "path": "virtual.enableCellContentVirtualization",
           "type": "boolean"
+        },
+        {
+          "description": "Extra vertical pixels rendered before and after the visible row window.",
+          "path": "virtual.rowBufferPx",
+          "type": "number"
+        },
+        {
+          "description": "Extra horizontal pixels rendered before and after the visible column window.",
+          "path": "virtual.columnBufferPx",
+          "type": "number"
         }
       ],
       "slug": "virtual",
@@ -4218,7 +4229,7 @@
       "summary": "Web Components uses one runtime-neutral wrapper package. Register the custom element with `@ace-grid/core`, `@ace-grid/pro`, or `@ace-grid/enterprise` explicitly."
     }
   ],
-  "generatedAt": "2026-05-30T06:12:06.817Z",
+  "generatedAt": "2026-06-13T20:04:06.168Z",
   "pages": [
     {
       "category": "Foundation",

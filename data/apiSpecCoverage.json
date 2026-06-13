@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-05-20T00:24:07.586Z",
+  "generatedAt": "2026-06-13T20:16:12.193Z",
   "rootInterface": "GridProps",
   "propCoverage": {
-    "generatedCount": 862,
-    "authoredSpecCount": 332,
-    "exactSpecCount": 217,
+    "generatedCount": 864,
+    "authoredSpecCount": 334,
+    "exactSpecCount": 219,
     "prefixSpecCount": 115,
-    "exactCoveredCount": 217,
+    "exactCoveredCount": 219,
     "prefixCoveredCount": 637,
-    "coveredCount": 854,
+    "coveredCount": 856,
     "missingCount": 8,
     "orphanCount": 0,
     "coveragePercent": 99.1,
@@ -295,6 +295,17 @@
       "missingPropPathsPreview": []
     },
     {
+      "key": "virtual",
+      "label": "Virtual",
+      "totalProps": 5,
+      "authoredProps": 5,
+      "exactCoveredProps": 5,
+      "prefixCoveredProps": 0,
+      "missingProps": 0,
+      "coveragePercent": 100,
+      "missingPropPathsPreview": []
+    },
+    {
       "key": "clipboard",
       "label": "Clipboard",
       "totalProps": 5,
@@ -330,17 +341,6 @@
     {
       "key": "columns",
       "label": "Columns",
-      "totalProps": 3,
-      "authoredProps": 3,
-      "exactCoveredProps": 3,
-      "prefixCoveredProps": 0,
-      "missingProps": 0,
-      "coveragePercent": 100,
-      "missingPropPathsPreview": []
-    },
-    {
-      "key": "virtual",
-      "label": "Virtual",
       "totalProps": 3,
       "authoredProps": 3,
       "exactCoveredProps": 3,
